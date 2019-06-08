@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">sanylib</string>
+    <string name="submit_txt">提交</string>
+    <string name="next_txt">下一页</string>
+    <string name="hello_world">hello,world!</string>
+    <string name="txt_get_token">获取token</string>
+    <string name="text_get_userinfo">获取用户信息</string>
+    <string name="txt_username">用户名</string>
+    <string name="input_username_hint">请输入用户名</string>
+    <string name="txt_submit">提交</string>
+    <string name="txt_reset">取消</string>
+    <string name="tel">电话</string>
+    <string name="email">邮箱</string>
+    <string name="pos">单位</string>
+    <string name="card">工号</string>
+    <string name="school">湖南三一工业职业技术学院</string>
+    <string name="msg_person_txt">通知人:</string>
+    <string name="policy_department_txt">反馈部门：学工部</string>
+    <string name="today_feedback_txt">今日反馈</string>
+    <string name="test_txt_1">今日主要内容</string>
+    <string name="text_txt_2">3月21日至26日，习近平主席应邀对意大利、摩纳哥、法国进行国事访问，此次 欧洲之行是中国国家最高领导人今年首次出访。在对三国的访问行程中，习近平主 席见证了多个第一次。 21日，国家主席习近平乘专机抵达罗马，开始对意大利共和国进行国事访问。 这是习近平和夫人彭丽媛步出舱门。 23日，国家主席习近平在罗马同意大利总理孔特举行会谈，两国领导人共同见 证签署和交换中意关于共同推进“一带一路”建设的谅解备忘录，意大利由此成为七 国集团中第一个和中国签约支持“一带一路”的国家。在意大利加入共建“一带一路” 倡议的过程中，受到了一些外来压力和干扰，不过意大利最终决定采取务实态度加 强与中国合作，这既符合意大利的利益，在意大利原有的发达国家伙伴中，也具有 一定的导向作用</string>
+    <string name="notice_person_txt">通知人</string>
+    <string name="notice_person_1">薛主任</string>
+    <string name="date_time_1">2019-05-20 2:00pm</string>
+    <string name="notice_time_txt">通知时间：</string>
+
+    <string name="detail_title">详情</string>
+    <string name="test_txt">教学楼A105教室投影损坏</string>
+    <string name="test1_txt">A105教室投影已经坏了，上课老师为黄老师，请安排人员进行维修，必须今天修好，否则我会告到校长大人那里去，让你吃了不兜着走！</string>
+    <string name="test2_txt">A栋102</string>
+    <string name="date_txt">Date:</string>
+    <string name="date1_txt">2019-05-20 2:45pm</string>
+    <string name="fk_depart_txt">反馈部门：学工部</string>
+    <string name="pl_depart_txt">责任部门：信息中心</string>
+    <string name="my_feedback">我的反馈</string>
+    <string name="go_feedback">去反馈</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="modify_email">修改邮箱</string>
+    <string name="confirm">确定</string>
+    <string name="modify_email_success">邮箱修改成功</string>
+    <string name="modify_tel_success">电话号码修改成功</string>
+    <string name="please_input_email">请输入email</string>
+    <string name= "please_input_tel">请输入电话号码</string>
+    <string name="cancel">取消</string>
+    <string name="submit">提交</string>
+    <string name="skip_txt">跳过&#160;&#160;</string>
+    <string name="second_txt">s</string>
+</resources>

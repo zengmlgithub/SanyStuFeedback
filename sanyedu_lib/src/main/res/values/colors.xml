@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="login_bg">#D765A0</color>
+    <color name="login_txt_color">#FFFFFF</color>
+    <color name="toolBarColor">#FF0000</color>
+    <color name="red">#FF0000</color>
+
+    <color name="black">#000000</color>
+    <color name="line_bg">#FF707070</color>
+    <color name="blue">#3366CC</color>
+    <color name="gray_back">#999</color>
+
+
+    <color name="app_main_color">#FF0000</color>
+    <color name="title_black">#FF000000</color>
+    <color name="depart_blue">#7D7D7D</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="colorMainGreen">#40cab3</color>
+    <color name="color_f6">#f6f6f6</color>
+    <color name="color_8586d6">#8586d8</color>
+    <color name="color_F2F2F2">#F2F2F2</color>
+    <color name="color_FEFEFE">#FEFEFE</color>
+    <color name="color_D4D4D4">#D4D4D4</color>
+    <color name="color_F1F3F4">#F1F3F4</color>
+    <color name="color_6DB7E5">#6DB7E5</color>
+    <color name="color_2B2B2B">#2B2B2B</color>
+    <color name="color_FF4500">#FF4500</color>
+    <color name="color_00FA9A">#00FA9A</color>
+    <color name="color_778899">#778899</color>
+    <color name="color_66CDAA">#66CDAA</color>
+    <color name="color_5FF1D9">#5FF1D9</color>
+    <color name="color_FF3B30">#FF3B30</color>
+    <color name="color_5856D6">#5856D6</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_7CCD7C">#7CCD7C</color>
+
+    <color name="font_gray_b">#d4d4d3</color>
+
+    <color name="font_tab_1">#42369a</color>
+    <color name="font_tab_0">#b1b1b1</color>
+
+
+    <color name="font_common_1">#424242</color>
+    <color name="font_common_2">#a1a1a1</color>
+    <color name="font_blue">#42369a</color>
+
+    <color name="font_green">#00cccc</color>
+
+    <color name="commom_background">#f3f3f3</color>
+    <color name="color_436EEE">#436EEE</color>
+
+</resources>
