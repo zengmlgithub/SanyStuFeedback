@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="19dp"
+    android:paddingRight="19dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/op_rl"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39sp"
+            android:text="@string/txt_reset"
+            android:id="@+id/goback_iv"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_txt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="39dp"
+            android:textSize="12sp"
+            android:id="@+id/submit_tv"
+
+            />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请为你的问题输入一个标题"
+        android:layout_below="@+id/op_rl"
+        android:background="@drawable/shape_rec_black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:id="@+id/title_et"
+        style="@style/edit_title_style"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/address_date_ll"
+        android:orientation="horizontal"
+        android:layout_below="@id/title_et"
+        android:layout_marginTop="10dp"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="请输入反馈地点"
+            android:background="@drawable/shape_rec_black"
+            android:id="@+id/address_et"
+            style="@style/edit_content_style"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="15"
+        android:layout_below="@id/address_date_ll"
+        android:layout_marginTop="10dp"
+        android:textSize="8sp"
+        android:background="@drawable/shape_rec_black"
+        android:id="@+id/feedback_detail_et"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pl_fl_ll"
+        android:orientation="horizontal"
+        android:layout_below="@id/feedback_detail_et"
+        android:layout_marginTop="25dp"
+        >
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="请选择责任部门"
+            android:background="@drawable/shape_ring_depart"
+            android:id="@+id/policy_department_et"
+
+            android:paddingLeft="10dp"
+            />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="请选择责任人"
+            android:background="@drawable/shape_ring_depart"
+            android:id="@+id/policy_person_et"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/pl_fl_ll"
+        android:layout_marginTop="44dp"
+        android:id="@+id/recycler"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

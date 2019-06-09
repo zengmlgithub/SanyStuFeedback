@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sanyedu.stufeedback">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--使用摄像头时的权限申明-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +23,8 @@
         android:name=".app.StuFeedbackApp"
         >
 
+
+
         <!--自适应的参数-->
 
         <meta-data
@@ -21,7 +34,7 @@
             android:name="design_height_in_dp"
             android:value="640"/>
 
-        <activity android:name=".activity.FirstActivity"
+        <activity android:name=".activity.GotoFeedbackActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             >
             <intent-filter>
@@ -36,6 +49,12 @@
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".activity.FirstActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            />
+
         <activity android:name=".activity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:launchMode="singleInstance"
