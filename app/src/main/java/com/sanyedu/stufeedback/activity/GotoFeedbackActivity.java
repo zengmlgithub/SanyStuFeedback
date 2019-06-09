@@ -28,8 +28,9 @@ import com.sanyedu.stufeedback.adapter.PersonAdapter;
 import com.sanyedu.stufeedback.layoutmanager.FullyGridLayoutManager;
 import com.sanyedu.stufeedback.model.DepartModel;
 import com.sanyedu.stufeedback.model.PersonModel;
-import com.sanyedu.stufeedback.mvp.gotofeedback.gotofeedback.GotoFeedbackContacts;
-import com.sanyedu.stufeedback.mvp.gotofeedback.gotofeedback.GotoFeedbackPresenter;
+import com.sanyedu.stufeedback.mvp.gotofeedback.GotoFeedbackContacts;
+import com.sanyedu.stufeedback.mvp.gotofeedback.GotoFeedbackPresenter;
+
 
 import java.util.ArrayList;
 import java.util.List;

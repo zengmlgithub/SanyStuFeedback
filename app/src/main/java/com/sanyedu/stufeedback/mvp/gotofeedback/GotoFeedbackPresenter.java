@@ -1,4 +1,4 @@
-package com.sanyedu.stufeedback.mvp.gotofeedback.gotofeedback;
+package com.sanyedu.stufeedback.mvp.gotofeedback;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;

@@ -1,4 +1,4 @@
-package com.sanyedu.stufeedback.mvp.gotofeedback.gotofeedback;
+package com.sanyedu.stufeedback.mvp.gotofeedback;
 
 import com.sanyedu.sanylib.mvp.IBasePresenter;
 import com.sanyedu.sanylib.mvp.IBaseView;
