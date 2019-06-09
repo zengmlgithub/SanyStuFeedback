@@ -21,7 +21,7 @@
             android:name="design_height_in_dp"
             android:value="640"/>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.FirstActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             >
             <intent-filter>
@@ -30,6 +30,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            />
+
     </application>
 
 </manifest>

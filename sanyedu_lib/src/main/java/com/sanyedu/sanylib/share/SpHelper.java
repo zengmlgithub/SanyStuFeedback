@@ -6,7 +6,9 @@ import android.preference.PreferenceManager;
 import android.util.Base64;
 
 
+import com.sanyedu.sanylib.base.SanyEdu;
 import com.sanyedu.sanylib.log.SanyLogs;
+import com.sanyedu.sanylib.okhttp.utils.Exceptions;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -19,11 +21,17 @@ public class SpHelper {
 
     private static SharedPreferences mSharedPreferences;
 
-    private static synchronized SharedPreferences getPreferneces(Context context) {
-        if (mSharedPreferences == null) {
+    private static synchronized SharedPreferences getPreferneces() {
+
+        Context context = SanyEdu.getContext();
+        if(context == null){
+            Exceptions.illegalArgument("you can not initial context,please init context in application");
+        }
+
+        if (mSharedPreferences == null ) {
             // mSharedPreferences = App.context.getSharedPreferences(
             // PREFERENCE_NAME, Context.MODE_PRIVATE);
-            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(SanyEdu.getContext());
         }
         return mSharedPreferences;
     }
@@ -31,15 +39,16 @@ public class SpHelper {
     /**
      * 打印所有
      */
-    public static void print(Context context) {
-        System.out.println(getPreferneces(context).getAll());
+    public static void print() {
+
+        System.out.println(getPreferneces().getAll());
     }
 
     /**
      * 清空保存在默认SharePreference下的所有数据
      */
-    public static void clear(Context context) {
-        getPreferneces(context).edit().clear().commit();
+    public static void clear( ) {
+        getPreferneces().edit().clear().commit();
     }
 
     /**
@@ -47,8 +56,8 @@ public class SpHelper {
      *
      * @return
      */
-    public static void putString(Context context,String key, String value) {
-        getPreferneces(context).edit().putString(key, value).commit();
+    public static void putString(String key, String value) {
+        getPreferneces().edit().putString(key, value).commit();
     }
 
     /**
@@ -57,14 +66,14 @@ public class SpHelper {
      * @param key
      * @return
      */
-    public static String getString(Context context,String key) {
-        return getPreferneces(context).getString(key, null);
+    public static String getString(String key) {
+        return getPreferneces().getString(key, null);
 
     }
 
-    public  static <T extends Object> void putObj(Context context,String key, T userInfo) throws Exception {
+    public  static <T extends Object> void putObj(String key, T userInfo) throws Exception {
         if(userInfo instanceof Serializable) {
-            SharedPreferences sharedPreferences = getPreferneces(context);
+            SharedPreferences sharedPreferences = getPreferneces();
             SharedPreferences.Editor editor = sharedPreferences.edit();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             try {
@@ -83,7 +92,7 @@ public class SpHelper {
 
 
     public static <T extends Object> T getObj(Context context,String key){
-        SharedPreferences sharedPreferences=getPreferneces(context);
+        SharedPreferences sharedPreferences=getPreferneces();
         String temp = sharedPreferences.getString(key, "");
         ByteArrayInputStream bais =  new ByteArrayInputStream(Base64.decode(temp.getBytes(), Base64.DEFAULT));
         T userInfo = null;
@@ -104,8 +113,8 @@ public class SpHelper {
      *
      * @return
      */
-    public static void putInt(Context context,String key, int value) {
-        getPreferneces(context).edit().putInt(key, value).commit();
+    public static void putInt(String key, int value) {
+        getPreferneces().edit().putInt(key, value).commit();
     }
 
     /**
@@ -114,8 +123,8 @@ public class SpHelper {
      * @param key
      * @return
      */
-    public static int getInt(Context context,String key) {
-        return getPreferneces(context).getInt(key, 0);
+    public static int getInt(String key) {
+        return getPreferneces().getInt(key, 0);
     }
 
     /**
@@ -123,16 +132,16 @@ public class SpHelper {
      *
      * @return
      */
-    public static void putBoolean(Context context,String key, Boolean value) {
-        getPreferneces(context).edit().putBoolean(key, value).commit();
+    public static void putBoolean(String key, Boolean value) {
+        getPreferneces().edit().putBoolean(key, value).commit();
     }
 
-    public static void putLong(Context context,String key, long value) {
-        getPreferneces(context).edit().putLong(key, value).commit();
+    public static void putLong(String key, long value) {
+        getPreferneces().edit().putLong(key, value).commit();
     }
 
-    public static long getLong(Context context,String key) {
-        return getPreferneces(context).getLong(key, 0);
+    public static long getLong(String key) {
+        return getPreferneces().getLong(key, 0);
     }
 
     /**
@@ -141,8 +150,8 @@ public class SpHelper {
      * @param key
      * @return
      */
-    public static boolean getBoolean(Context context,String key, boolean defValue) {
-        return getPreferneces(context).getBoolean(key, defValue);
+    public static boolean getBoolean(String key, boolean defValue) {
+        return getPreferneces().getBoolean(key, defValue);
 
     }
 
@@ -151,8 +160,8 @@ public class SpHelper {
      *
      * @return
      */
-    public static void removeString(Context context,String key) {
-        getPreferneces(context).edit().remove(key).commit();
+    public static void removeString(String key) {
+        getPreferneces().edit().remove(key).commit();
     }
 
 

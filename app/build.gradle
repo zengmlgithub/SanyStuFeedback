@@ -31,4 +31,8 @@ dependencies {
 
     //增加自动适配设置
     implementation 'me.jessyan:autosize:1.1.2'
+
+    //butterknife 的支持
+    implementation 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 }

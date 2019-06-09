@@ -2,6 +2,7 @@ package com.sanyedu.stufeedback.app;
 
 import android.app.Application;
 
+import com.sanyedu.sanylib.base.SanyEdu;
 import com.sanyedu.sanylib.imageloader.ImageLoader;
 import com.sanyedu.sanylib.log.SanyLogs;
 import com.sanyedu.stufeedback.imageloader.PicassoLoader;
@@ -24,6 +25,9 @@ public class StuFeedbackApp extends Application {
 
         //初始化图片库
         ImageLoader.getInstance().setGlobalImageLoader(new PicassoLoader());
+
+        //初始化sanyedu_lib
+        SanyEdu.init(this);
 
     }
 
