@@ -20,7 +20,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.sanyedu.sanylib.base.SanyBaseActivity;
@@ -35,8 +34,8 @@ import com.sanyedu.sanylib.widget.CommonDialog;
 import com.sanyedu.sanylib.widget.PhotoPopupWindow;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.model.StudentModel;
-import com.sanyedu.stufeedback.mvp.personal.MainMyContacts;
-import com.sanyedu.stufeedback.mvp.personal.MainMyPresenter;
+import com.sanyedu.stufeedback.mvp.personal.PersonalContacts;
+import com.sanyedu.stufeedback.mvp.personal.PersonalPresenter;
 
 import java.io.File;
 import java.io.InputStream;
@@ -51,7 +50,7 @@ import static com.sanyedu.sanylib.utils.ConstantUtil.REQUEST_SMALL_IMAGE_CUTTING
 /**
  * 个人中心
  */
-public class PersonalActivity extends SanyBaseActivity<MainMyPresenter> implements MainMyContacts.IMainMyUI,View.OnClickListener {
+public class PersonalActivity extends SanyBaseActivity<PersonalPresenter> implements PersonalContacts.IMainMyUI,View.OnClickListener {
 
     private TextView nameTv;
     private TextView departTv;
@@ -149,8 +148,8 @@ public class PersonalActivity extends SanyBaseActivity<MainMyPresenter> implemen
     }
 
     @Override
-    public MainMyPresenter onBindPresenter() {
-        return new MainMyPresenter(this);
+    public PersonalPresenter onBindPresenter() {
+        return new PersonalPresenter(this);
     }
 
     @Override

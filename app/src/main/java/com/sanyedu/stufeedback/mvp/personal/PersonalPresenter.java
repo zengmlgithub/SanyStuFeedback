@@ -20,8 +20,8 @@ import java.io.InputStream;
 
 import static com.sanyedu.sanylib.utils.ConstantUtil.IMAGE_FILE_NAME;
 
-public class MainMyPresenter extends BasePresenter<MainMyContacts.IMainMyUI> implements MainMyContacts.IMainMyPresenter {
-    public MainMyPresenter(@NonNull MainMyContacts.IMainMyUI view) {
+public class PersonalPresenter extends BasePresenter<PersonalContacts.IMainMyUI> implements PersonalContacts.IMainMyPresenter {
+    public PersonalPresenter(@NonNull PersonalContacts.IMainMyUI view) {
         super(view);
     }
 

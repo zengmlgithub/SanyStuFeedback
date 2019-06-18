@@ -8,7 +8,7 @@ import com.sanyedu.sanylib.mvp.IBaseView;
 
 import java.io.InputStream;
 
-public final class MainMyContacts {
+public final class PersonalContacts {
     public interface IMainMyUI extends IBaseView {
         InputStream openInputStream(Uri uri);
         void showHeadImage();
