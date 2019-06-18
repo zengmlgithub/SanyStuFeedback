@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="60dp"
+                android:layout_height="84dp"
+                android:id="@+id/setting_rl"
+                android:background="@mipmap/setting_bg">
+    <TextView android:layout_width="match_parent"
+              android:layout_height="41dp"
+              android:id="@+id/modify_pwd_tv"
+              android:background="@mipmap/modify_bg"
+              android:text="去整改"
+              android:gravity="center"
+              android:textSize="12sp"
+
+    />
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="38dp"
+              android:id="@+id/logout_tv"
+              android:layout_below="@+id/modify_pwd_tv"
+              android:background="@drawable/shape_logout"
+              android:text="去关闭"
+              android:gravity="center"
+              android:textSize="12sp"
+    />
+</RelativeLayout>

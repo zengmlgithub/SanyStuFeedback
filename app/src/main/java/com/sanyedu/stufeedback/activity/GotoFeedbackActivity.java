@@ -1,35 +1,36 @@
 package com.sanyedu.stufeedback.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.PopupWindow;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
+import com.lzy.imagepicker.ImagePicker;
+import com.lzy.imagepicker.bean.ImageItem;
+import com.lzy.imagepicker.ui.ImageGridActivity;
+import com.lzy.imagepicker.ui.ImagePreviewDelActivity;
 import com.sanyedu.sanylib.base.SanyBaseActivity;
 import com.sanyedu.sanylib.log.SanyLogs;
+import com.sanyedu.sanylib.utils.ToastUtil;
+import com.sanyedu.sanylib.widget.GlideImageLoader;
+import com.sanyedu.sanylib.widget.PictureChooseDialog;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.adapter.DepartAdapter;
-import com.sanyedu.stufeedback.adapter.GridImageAdapter;
+import com.sanyedu.stufeedback.adapter.ImagePickerAdapter;
 import com.sanyedu.stufeedback.adapter.PersonAdapter;
-import com.sanyedu.stufeedback.layoutmanager.FullyGridLayoutManager;
+import com.sanyedu.stufeedback.model.DepartBean;
 import com.sanyedu.stufeedback.model.DepartModel;
+import com.sanyedu.stufeedback.model.FeedbackItem;
 import com.sanyedu.stufeedback.model.PersonModel;
 import com.sanyedu.stufeedback.mvp.gotofeedback.GotoFeedbackContacts;
 import com.sanyedu.stufeedback.mvp.gotofeedback.GotoFeedbackPresenter;
+import com.sanyedu.stufeedback.utils.UserInfoHelper;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.runtime.Permission;
 
 
 import java.util.ArrayList;
@@ -43,16 +44,20 @@ import butterknife.OnClick;
 /**
  * 提交反馈的页面
  */
-public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI, AdapterView.OnItemSelectedListener {
+public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI, ImagePickerAdapter.OnRecyclerViewItemClickListener, AdapterView.OnItemSelectedListener {
 
-    @BindView(R.id.goback_iv)
-    TextView gobackTv;
+    private RecyclerView recyclerView;
 
-    @BindView(R.id.submit_tv)
-    TextView commitTv;
+    //当前选择的所有图片
+    private ArrayList<ImageItem> selImageList;
+    private int maxImgCount = 3;
+    public static final int IMAGE_ITEM_ADD = -1;
+    public static final int REQUEST_CODE_SELECT = 100;
+    public static final int REQUEST_CODE_PREVIEW = 101;
+    private ImagePickerAdapter adapter;
 
-    @BindView(R.id.recycler)
-    RecyclerView mRecyclerView;
+    private DepartAdapter departAdapter;
+    private PersonAdapter personAdapter;
 
     @BindView(R.id.policy_department_et)
     Spinner departSpinner;
@@ -61,64 +66,45 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     Spinner personSpinner;
 
 
+    @OnClick(R.id.submit_tv)
+    public void submit(){
+        SanyLogs.i("submit~~~~");
+        List<String> pathList = getImagePath();
+        showLoading();
+        getPresenter().postFeedbackToServer(pathList,getCurrentItem());
+    }
 
-    private int maxSelectNum = 3;
-    private List<LocalMedia> selectList = new ArrayList<>();
-    private GridImageAdapter adapter;
+    @BindView(R.id.title_et)
+    EditText titleEt;
 
-    private PopupWindow pop;
+    @BindView(R.id.address_et)
+    EditText addressEt;
 
-    private List<DepartModel> departBeans = null;
+    @BindView(R.id.feedback_detail_et)
+    EditText contentEt;
 
-    DepartAdapter departAdapter;
-    private PersonAdapter personAdapter;
 
-    @OnClick(R.id.goback_iv)
-    public void close(){
-        finish();
+    private List<String> getImagePath() {
+        if(selImageList != null && selImageList.size() > 0){
+            List<String> tempList = new ArrayList<>();
+            for(int i = 0 ; i < selImageList.size() ; i ++){
+                tempList.add(selImageList.get(i).path);
+            }
+
+            return tempList;
+        }else{
+            return null;
+        }
     }
 
     @Override
     protected void initData() {
         ButterKnife.bind(this);
-        initPhoto();
+        initImagePickerMulti();
+        initRecyclerView();
+
         initDepart();
         initPerson();
-    }
-
-    private void initPhoto() {
-        FullyGridLayoutManager manager = new FullyGridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(manager);
-        adapter = new GridImageAdapter(this, onAddPicClickListener);
-        adapter.setList(selectList);
-        adapter.setSelectMax(maxSelectNum);
-        mRecyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                if (selectList.size() > 0) {
-                    LocalMedia media = selectList.get(position);
-                    String pictureType = media.getPictureType();
-                    int mediaType = PictureMimeType.pictureToVideo(pictureType);
-                    switch (mediaType) {
-                        case 1:
-                            // 预览图片 可自定长按保存路径
-                            //PictureSelector.create(MainActivity.this).externalPicturePreview(position, "/custom_file", selectList);
-                            PictureSelector.create(GotoFeedbackActivity.this).externalPicturePreview(position, selectList);
-                            break;
-                        case 2:
-                            // 预览视频
-                            PictureSelector.create(GotoFeedbackActivity.this).externalPictureVideo(media.getPath());
-                            break;
-                        case 3:
-                            // 预览音频
-                            PictureSelector.create(GotoFeedbackActivity.this).externalPictureAudio(media.getPath());
-                            break;
-                    }
-                }
-            }
-        });
-
     }
 
     private void initPerson() {
@@ -135,11 +121,39 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         departSpinner.setOnItemSelectedListener(this);
     }
 
-//    @Override
-//    protected void setListeners() {
-//        gobackTv.setOnClickListener(this);
-//        commitTv.setOnClickListener(this);
-//    }
+    private void initRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        selImageList = new ArrayList<>();
+        adapter = new ImagePickerAdapter(this, selImageList, maxImgCount);
+        adapter.setOnItemClickListener(this);
+        adapter.setOnItemRemoveClick(new ImagePickerAdapter.OnItemRemoveClick() {
+            @Override
+            public void onItemRemoveClick() {
+                adapter.setImages(adapter.getImages());
+                adapter.notifyDataSetChanged();
+                selImageList.clear();
+                selImageList.addAll(adapter.getImages());
+            }
+        });
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initImagePickerMulti() {
+        ImagePicker imagePicker = ImagePicker.getInstance();
+        imagePicker.setImageLoader(new GlideImageLoader());   //设置图片加载器
+        imagePicker.setShowCamera(true);                      //显示拍照按钮
+        imagePicker.setCrop(false);                            //允许裁剪（单选才有效）
+        imagePicker.setSaveRectangle(true);                   //是否按矩形区域保存
+        imagePicker.setSelectLimit(maxImgCount);              //选中数量限制
+        imagePicker.setMultiMode(true);                      //多选
+//        imagePicker.setStyle(CropImageView.Style.RECTANGLE);  //裁剪框的形状
+//        imagePicker.setFocusWidth(800);                       //裁剪框的宽度。单位像素（圆形自动取宽高最小值）
+//        imagePicker.setFocusHeight(800);                      //裁剪框的高度。单位像素（圆形自动取宽高最小值）
+//        imagePicker.setOutPutX(1000);                         //保存文件的宽度。单位像素
+//        imagePicker.setOutPutY(1000);                         //保存文件的高度。单位像素
+    }
 
     @Override
     protected int getLayout() {
@@ -151,110 +165,9 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         return new GotoFeedbackPresenter(this);
     }
 
-    private GridImageAdapter.onAddPicClickListener onAddPicClickListener = new GridImageAdapter.onAddPicClickListener() {
-
-        @Override
-        public void onAddPicClick() {
-            //第一种方式，弹出选择和拍照的dialog
-            showPop();
-        }
-    };
-
-    private void showPop() {
-        View bottomView = View.inflate(GotoFeedbackActivity.this, R.layout.layout_bottom_dialog, null);
-        TextView mAlbum = bottomView.findViewById(R.id.tv_album);
-        TextView mCamera = bottomView.findViewById(R.id.tv_camera);
-        TextView mCancel = bottomView.findViewById(R.id.tv_cancel);
-
-        pop = new PopupWindow(bottomView, -1, -2);
-        pop.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        pop.setOutsideTouchable(true);
-        pop.setFocusable(true);
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = 0.5f;
-        getWindow().setAttributes(lp);
-        pop.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                WindowManager.LayoutParams lp = getWindow().getAttributes();
-                lp.alpha = 1f;
-                getWindow().setAttributes(lp);
-            }
-        });
-        pop.setAnimationStyle(R.style.main_menu_photo_anim);
-        pop.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
-
-        View.OnClickListener clickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.tv_album:
-                        //相册
-                        PictureSelector.create(GotoFeedbackActivity.this)
-                                .openGallery(PictureMimeType.ofImage())
-                                .maxSelectNum(maxSelectNum)
-                                .minSelectNum(1)
-                                .imageSpanCount(3)
-                                .previewImage(true)
-                                .selectionMode(PictureConfig.MULTIPLE)
-                                .forResult(PictureConfig.CHOOSE_REQUEST);
-                        break;
-                    case R.id.tv_camera:
-                        //拍照
-                        PictureSelector.create(GotoFeedbackActivity.this)
-                                .openCamera(PictureMimeType.ofImage())
-                                .forResult(PictureConfig.CHOOSE_REQUEST);
-                        break;
-                    case R.id.tv_cancel:
-                        //取消
-                        //closePopupWindow();
-                        break;
-                }
-                closePopupWindow();
-            }
-        };
-
-        mAlbum.setOnClickListener(clickListener);
-        mCamera.setOnClickListener(clickListener);
-        mCancel.setOnClickListener(clickListener);
-    }
-
-
-    public void closePopupWindow() {
-        if (pop != null && pop.isShowing()) {
-            pop.dismiss();
-            pop = null;
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        SanyLogs.i( "onActivityResult~~~~~~requestCode:" + requestCode + ",resultCode:" + resultCode);
-        List<LocalMedia> images;
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case PictureConfig.CHOOSE_REQUEST:
-                    // 图片选择结果回调
-                    images = PictureSelector.obtainMultipleResult(data);
-                    selectList.addAll(images);
-//                    selectList = PictureSelector.obtainMultipleResult(data);
-                    // 例如 LocalMedia 里面返回三种path
-                    // 1.media.getPath(); 为原图path
-                    // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true
-                    // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
-                    // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
-                    adapter.setList(selectList);
-                    adapter.notifyDataSetChanged();
-                    break;
-            }
-        }
-    }
-
-
     @Override
     public void setDepartList(List<DepartModel> departList) {
-        this.departBeans = departList;
+        departBeans = departList;
         departAdapter.setData(departList);
     }
 
@@ -263,7 +176,237 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         personAdapter.setData(personList);
     }
 
+    @Override
+    public FeedbackItem getCurrentItem() {
+        FeedbackItem tempItem = new FeedbackItem();
+        try {
+            String address = addressEt.getText().toString().trim();
+            SanyLogs.i("address:" + address);
+            tempItem.setFeedbackAddress(address);
 
+            String content = contentEt.getText().toString().trim();
+            SanyLogs.i("content:" + content);
+            tempItem.setFeedbackContent(content);
+
+            String feedbackDept = getFeedbackDept();
+            SanyLogs.i("feedbackDept:" + feedbackDept);
+            tempItem.setFeedbackDept(feedbackDept);
+
+            String title = titleEt.getText().toString().trim();
+            SanyLogs.i("title:" + title);
+            tempItem.setFeedbackTitle(title);
+
+            String responseDepartName = getResponseDepartName();
+            tempItem.setToResponsibledept(responseDepartName);
+
+            String feedbackId = getFeedbackId();
+            tempItem.setFeedbackPersonid(feedbackId);
+
+            String feedbackPeopleName = getFeedbackPeopleName();
+            tempItem.setFeedbackPersonname(feedbackPeopleName);
+
+            String responsePeopleName = getResponseName();
+            tempItem.setToResponsiblename(responsePeopleName);
+
+            String responsePeopleId = getResponseId();
+            tempItem.setToResponsibleid(responsePeopleId);
+
+        }catch (Exception e){
+            SanyLogs.i(e.toString());
+        }
+        return tempItem;
+    }
+
+    @Override
+    public void updateFeedbackSuccess() {
+        hideLoading();
+        //上传完后
+        finish();
+    }
+
+    @Override
+    public void updateFeedbackFailure(String failureReson) {
+        hideLoading();
+        ToastUtil.showLongToast(failureReson);
+    }
+
+    private String getFeedbackDept() {
+        String depart = UserInfoHelper.getPersonDept();
+        return depart;
+    }
+
+    private String getFeedbackPeopleName() {
+        String name = UserInfoHelper.getPersonName();
+        return name;
+    }
+
+    private String getFeedbackId() {
+        String id = UserInfoHelper.getPersonId();
+        return id;
+    }
+
+    //
+    private String getResponseId() {
+        Object tempBean = personSpinner.getSelectedItem();
+        PersonModel personBean = null;
+        if(tempBean instanceof PersonModel){
+            personBean = (PersonModel)tempBean;
+            if(personBean != null){
+                return personBean.getId();
+            }
+        }
+        return null;
+    }
+
+    //获取当前选择的部门
+    private String getResponseDepartName() {
+        Object tempBean = departSpinner.getSelectedItem();
+        DepartBean departBean = null;
+        if(tempBean instanceof DepartBean){
+            departBean = (DepartBean)tempBean;
+            if(departBean != null){
+                return departBean.getFullname();
+            }
+        }
+        return null;
+    }
+
+    //获取当前选择的部门
+    private String getResponseName() {
+        Object tempBean = personSpinner.getSelectedItem();
+        PersonModel personBean = null;
+        if(tempBean instanceof PersonModel){
+            personBean = (PersonModel)tempBean;
+            if(personBean != null){
+                return personBean.getTeName();
+            }
+        }
+        return null;
+    }
+
+
+
+    @Override
+    public void onItemClick(View view, int position){
+        SanyLogs.i("OnItemClick~~~position:" + position);
+        switch (position){
+            case IMAGE_ITEM_ADD:
+                SanyLogs.i("OnItemClick~~~position  switch:" + IMAGE_ITEM_ADD);
+                //先请求权限，再进行操作
+//                AndPermission.with(this)
+//                        .requestCode(300)
+//                        .permission(
+//                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                                Manifest.permission.READ_EXTERNAL_STORAGE)
+//                        .callback(this)
+//                        .start();
+
+                requestPermission();
+
+                break;
+            default:
+                //打开预览
+                Intent intentPreview = new Intent(this, ImagePreviewDelActivity.class);
+                intentPreview.putExtra(ImagePicker.EXTRA_IMAGE_ITEMS, (ArrayList<ImageItem>) adapter.getImages());
+                intentPreview.putExtra(ImagePicker.EXTRA_SELECTED_IMAGE_POSITION, position);
+                intentPreview.putExtra(ImagePicker.EXTRA_FROM_ITEMS,true);
+                startActivityForResult(intentPreview, REQUEST_CODE_PREVIEW);
+                break;
+        }
+    }
+
+    private void requestPermission() {
+        AndPermission.with(this)
+                .runtime()
+                .permission(Permission.Group.CAMERA)
+//                .rationale(this)//添加拒绝权限回调
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        // data.get(0);
+                        SanyLogs.d("permission", data.get(0));
+                        chooseImage();
+                    }
+                })
+                .onDenied(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        /**
+                         * 当用户没有允许该权限时，回调该方法
+                         */
+                        ToastUtil.showLongToast("没有获取照相机权限，该功能无法使用");
+                        /**
+                         * 判断用户是否点击了禁止后不再询问，AndPermission.hasAlwaysDeniedPermission(MainActivity.this, data)
+                         */
+                        if (AndPermission.hasAlwaysDeniedPermission(GotoFeedbackActivity.this, data)) {
+                            //true，弹窗再次向用户索取权限
+//                            showSettingDialog(MainActivity.this, data);
+                        }
+                    }
+                }).start();
+    }
+
+    private PictureChooseDialog showDialog(PictureChooseDialog.SelectDialogListener listener, List<String> names) {
+        PictureChooseDialog dialog = new PictureChooseDialog(this, R.style.transparentFrameWindowStyle, listener, names);
+        if (!this.isFinishing()) {
+            dialog.show();
+        }
+        return dialog;
+    }
+    private void chooseImage(){
+        List<String> names = new ArrayList<>();
+        names.add("拍照");
+        names.add("从相册选择");
+        showDialog(new PictureChooseDialog.SelectDialogListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0: // 直接调起相机
+                        //打开选择,本次允许选择的数量
+                        ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
+                        Intent intent = new Intent(GotoFeedbackActivity.this, ImageGridActivity.class);
+                        intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS,true); // 是否是直接打开相机
+                        startActivityForResult(intent, REQUEST_CODE_SELECT);
+                        break;
+                    case 1:
+                        //打开选择,本次允许选择的数量
+                        ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
+                        Intent intent1 = new Intent(GotoFeedbackActivity.this, ImageGridActivity.class);
+                        startActivityForResult(intent1, REQUEST_CODE_SELECT);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }, names);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == ImagePicker.RESULT_CODE_ITEMS) {
+            //添加图片返回
+            if (data != null && requestCode == REQUEST_CODE_SELECT) {
+                ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
+                if (images != null){
+                    selImageList.addAll(images);
+                    adapter.setImages(selImageList);
+                }
+            }
+        } else if (resultCode == ImagePicker.RESULT_CODE_BACK) {
+            //预览图片返回
+            if (data != null && requestCode == REQUEST_CODE_PREVIEW) {
+                ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_IMAGE_ITEMS);
+                if (images != null){
+                    selImageList.clear();
+                    selImageList.addAll(images);
+                    adapter.setImages(selImageList);
+                }
+            }
+        }
+    }
+
+    private List<DepartModel> departBeans = null;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(departBeans != null ){
@@ -281,20 +424,27 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     }
 
-    @OnClick(R.id.submit_tv)
-    public void submitPhotos(){
-        List<String> photoList = new ArrayList<>();
-        if(selectList != null && selectList.size() > 0 ){
-            for(int i = 0; i < selectList.size() ; i ++){
-                LocalMedia localMedia = selectList.get(i);
-                if(localMedia != null){
-                    String photoPath = localMedia.getPath();
-                    SanyLogs.i("photoPath:" + photoPath);
-                    photoList.add(photoPath);
-                }
-            }
-        }
-
-        getPresenter().postFiles(photoList);
-    }
+//    @Override
+//    public void showRationale(Context context, List<String> data, RequestExecutor executor) {
+//        List<String> permissionNames = Permission.transformText(context, data);
+//        String message = "请授权该下的权限" + "\n" + permissionNames;
+//
+//        new android.app.AlertDialog.Builder(context)
+//                .setCancelable(false)
+//                .setTitle("提示")
+//                .setMessage(message)
+//                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        executor.execute();
+//                    }
+//                })
+//                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        executor.cancel();
+//                    }
+//                })
+//                .show();
+//    }
 }

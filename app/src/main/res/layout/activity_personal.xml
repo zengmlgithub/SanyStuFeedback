@@ -303,7 +303,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/card_txt_tv"
-                    android:text="@string/card"
+                    android:text="@string/stu_card"
                     android:textColor="@color/black"
                     android:layout_toRightOf="@id/card_iv"
                     android:layout_marginLeft="12dp"

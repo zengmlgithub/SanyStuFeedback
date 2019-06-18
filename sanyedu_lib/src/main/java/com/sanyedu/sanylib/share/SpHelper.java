@@ -91,7 +91,7 @@ public class SpHelper {
     }
 
 
-    public static <T extends Object> T getObj(Context context,String key){
+    public static <T extends Object> T getObj(String key){
         SharedPreferences sharedPreferences=getPreferneces();
         String temp = sharedPreferences.getString(key, "");
         ByteArrayInputStream bais =  new ByteArrayInputStream(Base64.decode(temp.getBytes(), Base64.DEFAULT));

@@ -17,7 +17,7 @@ import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.MD5Utils;
 import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.model.TokenModel;
-import com.sanyedu.stufeedback.utils.ContantsUtil;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                             String code = tokenModel.getCode();
                             if (!TextUtils.isEmpty(code)) {
                                 if (HttpUtil.SUCCESS.equals(code)) {
-                                    SpHelper.putString(ContantsUtil.TOKEN, tokenModel.getToken());
+                                    SpHelper.putString(StuContantsUtil.TOKEN, tokenModel.getToken());
                                     getLogin(userName, password, regFlag);
                                 } else if (HttpUtil.ERROR_ACCOUNT.equals(code)) {
                                     //TODO:error
@@ -73,12 +73,12 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
     @Override
     public void getLogin(String userName, String password, String regFlag) {
         String url = HttpUtil.getPort(HttpUtil.LOGIN_PORT);
-        String tokenValue = "Bearer " + SpHelper.getString(ContantsUtil.TOKEN);
+        String tokenValue = "Bearer " + SpHelper.getString(StuContantsUtil.TOKEN);
         SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils
                 .post()
                 .url(url)
-                .addHeader(ContantsUtil.AUTHORIZATION, tokenValue)
+                .addHeader(StuContantsUtil.AUTHORIZATION, tokenValue)
                 .addParams("userName", userName)
                 .addParams("password", MD5Utils.getMD5(password))
                 .addParams("loginFlag", regFlag)
@@ -97,7 +97,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                 SanyLogs.i("userInfo:" + response.getObj().get(0));
                                 try {
                                     StudentModel userInfo = response.getObj().get(0);
-                                    SpHelper.putObj(ContantsUtil.STUINFO,userInfo);
+                                    SpHelper.putObj(StuContantsUtil.STUINFO,userInfo);
                                     getView().startMain();
                                 }catch (Exception e){
                                     SanyLogs.i(e.toString());

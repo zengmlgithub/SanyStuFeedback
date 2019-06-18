@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+>
+
+    <ImageButton
+            android:id="@+id/goback_tv"
+            style="@style/goback_style"/>
+
+    <TextView style="@style/page_title_style"
+              android:id="@+id/save_tv"
+              android:text="@string/modify_email"/>
+
+    <com.sanyedu.myfeedback.widget.EditTextWithDel android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   style="@style/edit_content_style"
+                                                   android:layout_below="@+id/goback_tv"
+                                                   android:layout_marginTop="15dp"
+                                                   android:id="@+id/modify_content_etw"
+                                                   android:background="@drawable/shape_rec_black"
+                                                   android:hint="请输入邮箱地址"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignLeft="@+id/modify_content_etw"
+              android:textSize="12dp"
+              android:textColor="@color/red"
+              android:text="电话号码不正确"
+              android:layout_marginLeft="4dp"
+              android:layout_below="@id/modify_content_etw"
+              android:id="@+id/check_tv"
+              android:visibility="gone"/>
+
+    <Button
+            android:layout_below="@id/modify_content_etw"
+            android:layout_marginTop="45dp"
+            android:text="@string/confirm"
+            style="@style/ring_btn_style"
+            android:id="@+id/confirm_btn"
+            android:background="@drawable/shape_ring_confirm"/>
+
+</RelativeLayout>

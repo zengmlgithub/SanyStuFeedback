@@ -40,7 +40,7 @@ public class FirstActivity extends SanyBaseActivity {
     }
 
     private boolean hasUserInfo() {
-        StudentModel studentModel = SpHelper.getObj(this,ConstantUtil.USERINFO);
+        StudentModel studentModel = SpHelper.getObj(ConstantUtil.USERINFO);
         return studentModel  != null && studentModel.getStuName() != null;
     }
 

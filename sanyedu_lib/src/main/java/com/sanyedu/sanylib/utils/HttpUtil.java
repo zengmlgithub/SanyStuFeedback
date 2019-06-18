@@ -123,11 +123,11 @@ public class HttpUtil {
         public final static String FEEDBACK_C = "feedbackC";
         public final static String TO_RESPONSIBL_NAME = "toResponsiblename";
         public final static String  TO_RESPONSIBLE_DEPT= "toResponsibledept";
+        public final static String TO_RESPONSIBLE_ID = "toResponsibleid";
     }
 
     public static class UploadFile{
 //        public final static String KEY = "key";
-
     }
 
     public static class UpdatePwd{

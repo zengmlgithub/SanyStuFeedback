@@ -25,12 +25,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends BaseXActivi
             mProgressDialog.dismiss();
         }
     }
-    
-    @Override
-    public void showToast(String msg){
-       //TODO:显示Toast
-    }
-    
+
     @Override
     protected void onDestroy() {
         hideLoading();

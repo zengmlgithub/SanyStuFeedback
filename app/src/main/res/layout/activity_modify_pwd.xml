@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/left_arrow"
+            android:id="@+id/goback_tv"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="17dp"
+    />
+
+    <TextView
+            android:text="修改密码"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:id="@+id/save_tv"
+            style="@style/page_title_style"
+    />
+
+    <com.sanyedu.myfeedback.widget.EditTextWithDel
+            android:layout_width="324dp"
+            android:id="@+id/input_first_pwd_et"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/save_tv"
+            android:layout_marginTop="25dp"
+            style="@style/edit_content_style"
+            android:background="@drawable/shape_rec_black"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/input_first_pwd_et"
+              android:layout_alignLeft="@id/input_first_pwd_et"
+              android:text="请输入原密码"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/first_hint_tv"
+              style="@style/edit_hint_style"
+    />
+
+    <com.sanyedu.myfeedback.widget.EditTextWithDel
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/input_second_pwd_et"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/input_first_pwd_et"
+            android:layout_marginTop="25dp"
+            style="@style/edit_content_style"
+            android:background="@drawable/shape_rec_black"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/input_second_pwd_et"
+              android:layout_alignLeft="@id/input_second_pwd_et"
+              android:text="密码必须大于6位,且含有字母大、小写和数字组合"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/second_hint_tv"
+              style="@style/edit_hint_style"
+    />
+
+    <com.sanyedu.myfeedback.widget.EditTextWithDel
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/input_third_pwd_et"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/input_second_pwd_et"
+            android:layout_marginTop="25dp"
+            style="@style/edit_content_style"
+            android:background="@drawable/shape_rec_black"
+    />
+
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/input_third_pwd_et"
+              android:layout_alignLeft="@id/input_third_pwd_et"
+              android:text="再次输入新密码"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/third_hint_tv"
+              style="@style/edit_hint_style"
+    />
+
+    <Button
+            android:layout_width="324dp"
+            android:layout_height="30dp"
+            android:text="确认修改"
+            android:textSize="12dp"
+            android:id="@+id/confirm_btn"
+            android:background="@drawable/shape_ring_confirm"
+            android:layout_below="@+id/input_third_pwd_et"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            style="@style/edit_hint_style"
+    />
+</RelativeLayout>

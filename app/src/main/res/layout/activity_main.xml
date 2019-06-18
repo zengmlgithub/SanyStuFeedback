@@ -55,6 +55,7 @@
         android:layout_height="91dp"
         android:layout_alignParentBottom="true"
         android:background="@mipmap/main_bottom_bg"
+        android:id="@+id/goto_feedback_rl"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView

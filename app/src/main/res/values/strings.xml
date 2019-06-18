@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">StuFeedback</string>
     <string name="name_test">兰世儒</string>
+    <string name="stu_card">学号</string>
+
+    <string name="email_illegacity">邮箱地址非法</string>
+    <string name="common_description">通用图片按钮</string>
+    <string name="tel_null">请输入电话号码</string>
+    <string name="error_tel">电话号码不正确</string>
+    <string name="modify_tel">修改电话</string>
 </resources>
