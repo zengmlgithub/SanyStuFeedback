@@ -2,7 +2,7 @@ package com.sanyedu.stufeedback.model;
 
 import java.io.Serializable;
 
-public class ChangeFeedbackBean implements Serializable {
+public class ChangeFeedbackModel implements Serializable {
     private String feedbackId;
     private String feedbackStatus;
     private String feedbackContent;
@@ -11,7 +11,7 @@ public class ChangeFeedbackBean implements Serializable {
     private String feedbackPerdept; //关闭人部门
 
 
-    public ChangeFeedbackBean(String feedbackId, String feedbackStatus, String feedbackContent, String feedbackPerid, String feedbackPername, String feedbackPerdept, String feedbackFilea, String feedbackFileb, String feedbackFilec) {
+    public ChangeFeedbackModel(String feedbackId, String feedbackStatus, String feedbackContent, String feedbackPerid, String feedbackPername, String feedbackPerdept, String feedbackFilea, String feedbackFileb, String feedbackFilec) {
         this.feedbackId = feedbackId;
         this.feedbackStatus = feedbackStatus;
         this.feedbackContent = feedbackContent;
@@ -20,7 +20,7 @@ public class ChangeFeedbackBean implements Serializable {
         this.feedbackPerdept = feedbackPerdept;
     }
 
-    public ChangeFeedbackBean() {
+    public ChangeFeedbackModel() {
     }
 
     public String getFeedbackId() {

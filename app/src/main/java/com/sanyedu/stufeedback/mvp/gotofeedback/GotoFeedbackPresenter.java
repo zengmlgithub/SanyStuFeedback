@@ -8,7 +8,6 @@ import com.sanyedu.sanylib.model.BaseModel;
 import com.sanyedu.sanylib.model.BaseModelCallback;
 
 import com.sanyedu.sanylib.mvp.BasePresenter;
-import com.sanyedu.stufeedback.model.DepartBean;
 import com.sanyedu.stufeedback.model.DepartModel;
 import com.sanyedu.stufeedback.model.FeedbackItem;
 import com.sanyedu.stufeedback.model.PersonModel;

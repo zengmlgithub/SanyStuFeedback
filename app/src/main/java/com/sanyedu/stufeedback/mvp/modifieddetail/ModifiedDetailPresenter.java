@@ -10,7 +10,7 @@ import com.sanyedu.sanylib.okhttp.OkHttpUtils;
 import com.sanyedu.sanylib.utils.CheckUtils;
 import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
-import com.sanyedu.stufeedback.model.DetailBean;
+import com.sanyedu.stufeedback.model.DetailModel;
 import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import okhttp3.Call;
@@ -35,7 +35,7 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
                 .addParams(HttpUtil.MoDifiedDetail.ID, id)
                 .build()
                 .execute(
-                        new BaseModelCallback<DetailBean>(){
+                        new BaseModelCallback<DetailModel>(){
 
                             @Override
                             public void onError(Call call, Exception e, int id) {
@@ -44,7 +44,7 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
                             }
 
                             @Override
-                            public void onResponse(BaseModel<DetailBean> response, int id) {
+                            public void onResponse(BaseModel<DetailModel> response, int id) {
                                 if (response == null){
 //                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
                                     getView().getDetailFailure(ErrorUtils.SERVER_ERROR);
@@ -66,9 +66,9 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
                                     return;
                                 }
 
-                                DetailBean detailBean = response.getObj();
-                                if (detailBean != null){
-                                    getView().setDetail(detailBean);
+                                DetailModel detailModel = response.getObj();
+                                if (detailModel != null){
+                                    getView().setDetail(detailModel);
                                     getView().getDetailSuccess();
                                 }else{
 //                                    ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);

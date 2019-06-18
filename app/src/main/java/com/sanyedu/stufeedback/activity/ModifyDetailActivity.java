@@ -19,7 +19,7 @@ import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.sanylib.widget.CloseFeedbackDialog;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.adapter.ModifyDetailAdapter;
-import com.sanyedu.stufeedback.model.DetailBean;
+import com.sanyedu.stufeedback.model.DetailModel;
 import com.sanyedu.stufeedback.mvp.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.stufeedback.mvp.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.stufeedback.utils.StuContantsUtil;
@@ -147,7 +147,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
 
     @Override
-    public void setDetail(DetailBean bean) {
+    public void setDetail(DetailModel bean) {
         SanyLogs.i(bean.toString());
         if (bean != null) {
             titleTv.setText(bean.getFeedbackTitle());

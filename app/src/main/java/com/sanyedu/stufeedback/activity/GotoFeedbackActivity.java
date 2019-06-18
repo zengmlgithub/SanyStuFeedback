@@ -21,7 +21,6 @@ import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.adapter.DepartAdapter;
 import com.sanyedu.stufeedback.adapter.ImagePickerAdapter;
 import com.sanyedu.stufeedback.adapter.PersonAdapter;
-import com.sanyedu.stufeedback.model.DepartBean;
 import com.sanyedu.stufeedback.model.DepartModel;
 import com.sanyedu.stufeedback.model.FeedbackItem;
 import com.sanyedu.stufeedback.model.PersonModel;
@@ -261,9 +260,9 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     //获取当前选择的部门
     private String getResponseDepartName() {
         Object tempBean = departSpinner.getSelectedItem();
-        DepartBean departBean = null;
-        if(tempBean instanceof DepartBean){
-            departBean = (DepartBean)tempBean;
+        DepartModel departBean = null;
+        if(tempBean instanceof DepartModel){
+            departBean = (DepartModel)tempBean;
             if(departBean != null){
                 return departBean.getFullname();
             }

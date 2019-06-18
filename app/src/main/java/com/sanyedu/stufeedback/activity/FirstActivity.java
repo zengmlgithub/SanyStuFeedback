@@ -45,7 +45,8 @@ public class FirstActivity extends SanyBaseActivity {
     }
 
     private void goToNext(){
-        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
+//        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
+        Class clazz = MainActivity.class;
         StartUtils.startActivity(FirstActivity.this,clazz);
         finish();
     }

@@ -3,12 +3,12 @@ package com.sanyedu.stufeedback.mvp.modifieddetail;
 
 import com.sanyedu.sanylib.mvp.IBasePresenter;
 import com.sanyedu.sanylib.mvp.IBaseView;
-import com.sanyedu.stufeedback.model.DetailBean;
+import com.sanyedu.stufeedback.model.DetailModel;
 
 public final class ModifiedDetailContacts {
     public interface IModifiedDetailUI extends IBaseView {
 
-        void setDetail(DetailBean bean);
+        void setDetail(DetailModel bean);
         void getDetailFailure(String msg);
         void getDetailSuccess();
         void modifySuccess();

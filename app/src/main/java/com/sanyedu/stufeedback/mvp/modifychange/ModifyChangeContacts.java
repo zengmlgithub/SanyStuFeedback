@@ -4,7 +4,7 @@ package com.sanyedu.stufeedback.mvp.modifychange;
 
 import com.sanyedu.sanylib.mvp.IBasePresenter;
 import com.sanyedu.sanylib.mvp.IBaseView;
-import com.sanyedu.stufeedback.model.ChangeFeedbackBean;
+import com.sanyedu.stufeedback.model.ChangeFeedbackModel;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public final class ModifyChangeContacts {
     }
 
     public interface IModifyChangePresenter extends IBasePresenter {
-         void updateFeedback(List<String> files, ChangeFeedbackBean changeFeedbackBean);
+         void updateFeedback(List<String> files, ChangeFeedbackModel changeFeedbackModel);
     }
 
 

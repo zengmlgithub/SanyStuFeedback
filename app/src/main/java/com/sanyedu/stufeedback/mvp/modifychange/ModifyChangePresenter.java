@@ -13,7 +13,7 @@ import com.sanyedu.sanylib.utils.CheckUtils;
 import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
-import com.sanyedu.stufeedback.model.ChangeFeedbackBean;
+import com.sanyedu.stufeedback.model.ChangeFeedbackModel;
 import com.sanyedu.stufeedback.mvp.UpdatePicture.UpdatePictureService;
 import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
@@ -27,14 +27,14 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
     }
 
 
-    private void updateFeedback(@NonNull ChangeFeedbackBean changeFeedbackBean, String pathA, String pathB, String pathC){
+    private void updateFeedback(@NonNull ChangeFeedbackModel changeFeedbackModel, String pathA, String pathB, String pathC){
 
         String url = HttpUtil.getPort(StuHttpUtil.UPLOAD_SUBRECTIFICATION_PORT);
 
-        SanyLogs.i(changeFeedbackBean.toString());
+        SanyLogs.i(changeFeedbackModel.toString());
 
         try {
-            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
+            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackModel)){
                 SanyLogs.e("ChangeFeedbackBean is null,return!");
                 return;
             }
@@ -46,12 +46,12 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
         OkHttpUtils
                 .post()
                 .url(url)
-               .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_ID,changeFeedbackBean.getFeedbackId())
-                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_STATUS,changeFeedbackBean.getFeedbackStatus())
-                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_CONTENT,changeFeedbackBean.getFeedbackContent())
-                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_PERID,changeFeedbackBean.getFeedbackPerid())
-                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_PERNAME,changeFeedbackBean.getFeedbackPername())
-                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_PERDEPT,changeFeedbackBean.getFeedbackPerdept())
+               .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_ID, changeFeedbackModel.getFeedbackId())
+                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_STATUS, changeFeedbackModel.getFeedbackStatus())
+                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_CONTENT, changeFeedbackModel.getFeedbackContent())
+                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_PERID, changeFeedbackModel.getFeedbackPerid())
+                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_PERNAME, changeFeedbackModel.getFeedbackPername())
+                .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_PERDEPT, changeFeedbackModel.getFeedbackPerdept())
                 .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_FILEA,pathA)
                 .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_FILEB,pathB)
                 .addParams(StuHttpUtil.UpdateFeedbackState.FEEDBACK_FILEC,pathC)
@@ -98,7 +98,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
 
 
     @Override
-    public void updateFeedback(final List<String> files, final ChangeFeedbackBean changeFeedbackBean) {
+    public void updateFeedback(final List<String> files, final ChangeFeedbackModel changeFeedbackModel) {
 
 //        try {
 //            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
@@ -119,8 +119,8 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
             @Override
             public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
                 if(service.hasPhoto()){
-                    if(changeFeedbackBean != null){
-                        updateFeedback(changeFeedbackBean,files.get(0),files.get(1),files.get(2));
+                    if(changeFeedbackModel != null){
+                        updateFeedback(changeFeedbackModel,files.get(0),files.get(1),files.get(2));
                     }
                 }
             }

@@ -21,7 +21,7 @@ import com.sanyedu.sanylib.widget.GlideImageLoader;
 import com.sanyedu.sanylib.widget.PictureChooseDialog;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.adapter.ImagePickerAdapter;
-import com.sanyedu.stufeedback.model.ChangeFeedbackBean;
+import com.sanyedu.stufeedback.model.ChangeFeedbackModel;
 import com.sanyedu.stufeedback.mvp.modifychange.ModifyChangeContacts;
 import com.sanyedu.stufeedback.mvp.modifychange.ModifyChangePresenter;
 import com.sanyedu.stufeedback.utils.StuContantsUtil;
@@ -255,26 +255,26 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
 
     @OnClick(R.id.save_tv)
     public void save(){
-        ChangeFeedbackBean changeFeedbackBean = new ChangeFeedbackBean();
-        changeFeedbackBean.setFeedbackId(feedbackId);
+        ChangeFeedbackModel changeFeedbackModel = new ChangeFeedbackModel();
+        changeFeedbackModel.setFeedbackId(feedbackId);
 
         String feedbackStatus = getFeedbackStatus();
-        changeFeedbackBean.setFeedbackStatus(feedbackStatus);
+        changeFeedbackModel.setFeedbackStatus(feedbackStatus);
 
         String feedbackContent = getFeedbackContent();
-        changeFeedbackBean.setFeedbackContent(feedbackContent);
+        changeFeedbackModel.setFeedbackContent(feedbackContent);
 
         String feedbackPerid = UserInfoHelper.getPersonId();
-        changeFeedbackBean.setFeedbackPerid(feedbackPerid);
+        changeFeedbackModel.setFeedbackPerid(feedbackPerid);
 
         String feedbackPername = UserInfoHelper.getPersonName();
-        changeFeedbackBean.setFeedbackPername(feedbackPername);
+        changeFeedbackModel.setFeedbackPername(feedbackPername);
 
         String feedbackPerdept = UserInfoHelper.getPersonDept();
-        changeFeedbackBean.setFeedbackPerdept(feedbackPerdept);
+        changeFeedbackModel.setFeedbackPerdept(feedbackPerdept);
 
         List<String> pathList = getPathList();
-        getPresenter().updateFeedback(pathList,changeFeedbackBean);
+        getPresenter().updateFeedback(pathList, changeFeedbackModel);
     }
 
     private List<String> getPathList() {
