@@ -9,6 +9,7 @@ import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.mvp.login.LoginContacts;
 import com.sanyedu.stufeedback.mvp.login.LoginPresenter;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +25,7 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
     public void commit(){
         String username = usernameEt.getText().toString();
         String password = passwordEt.getText().toString();
-        getPresenter().getToken(username,password, "2");
+        getPresenter().getToken(username,password, StuContantsUtil.TYPE_STUDENT);
         showLoading();
     }
 

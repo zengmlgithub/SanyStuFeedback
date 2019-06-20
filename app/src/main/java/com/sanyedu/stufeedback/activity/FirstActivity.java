@@ -31,7 +31,12 @@ public class FirstActivity extends SanyBaseActivity {
     @Override
     protected void initData() {
         ButterKnife.bind(this);
+
+        //设置全屏
+
         mHandler.post(myRunnale);
+
+
     }
 
     @Override
@@ -45,8 +50,7 @@ public class FirstActivity extends SanyBaseActivity {
     }
 
     private void goToNext(){
-//        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
-        Class clazz = MainActivity.class;
+        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
         StartUtils.startActivity(FirstActivity.this,clazz);
         finish();
     }

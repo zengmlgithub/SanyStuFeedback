@@ -10,14 +10,6 @@
             android:background="@mipmap/first_bg"
     >
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_centerInParent="true"
-                  android:id="@+id/hello"
-                  android:text="欢迎来到一日一反馈"
-                  android:textSize="30dp"
-                  android:textColor="@color/white"
-        />
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"

@@ -33,7 +33,7 @@
             android:value="640"/>
 
         <activity android:name=".activity.FirstActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/myFullscreen"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

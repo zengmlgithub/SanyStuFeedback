@@ -2,6 +2,7 @@ package com.sanyedu.stufeedback.mvp.login;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 
 
 import com.sanyedu.sanylib.log.SanyLogs;
@@ -18,6 +19,7 @@ import com.sanyedu.sanylib.utils.MD5Utils;
 import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.model.TokenModel;
 import com.sanyedu.stufeedback.utils.StuContantsUtil;
+import com.sanyedu.stufeedback.utils.StuErrorUtil;
 
 import java.util.List;
 
@@ -37,7 +39,6 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
         OkHttpUtils
                 .post()
                 .url(url)
-//                .addHeader(ConstantUtil.AUTHORIZATION,tokenValue)
                 .addParams("userName", userName)
                 .addParams("password", MD5Utils.getMD5(password))
                 .addParams("loginFlag", regFlag)
@@ -46,13 +47,13 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         SanyLogs.e("testUrl:" + e.getMessage());
-                        getView().loginFailure("登录失败");
+                        getView().loginFailure(StuErrorUtil.SERVER_ERROR);
                     }
 
                     @Override
                     public void onResponse(TokenModel tokenModel, int id) {
-                        SanyLogs.i("getToken:" + tokenModel.toString());
                         if (tokenModel != null) {
+                            SanyLogs.i(tokenModel.toString());
                             String code = tokenModel.getCode();
                             if (!TextUtils.isEmpty(code)) {
                                 if (HttpUtil.SUCCESS.equals(code)) {
@@ -60,9 +61,12 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                     getLogin(userName, password, regFlag);
                                 } else if (HttpUtil.ERROR_ACCOUNT.equals(code)) {
                                     //TODO:error
-                                    SanyLogs.i("getToken:error");
-                                    getView().loginFailure(HttpUtil.ERROR_SERVER);
+                                    SanyLogs.i("getToken:error-----");
+                                    getView().loginFailure(StuErrorUtil.ACCOUNT_ERROR);
                                 }
+                            }else{
+                                SanyLogs.e("tokenModel is null" );
+                                getView().loginFailure(StuErrorUtil.SERVER_ERROR);
                             }
                         }
 
@@ -94,7 +98,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
                             @Override
                             public void onResponse(BaseModel<List<StudentModel>> response, int id) {
-                                SanyLogs.i("userInfo:" + response.getObj().get(0));
+
                                 try {
                                     StudentModel userInfo = response.getObj().get(0);
                                     SpHelper.putObj(StuContantsUtil.STUINFO,userInfo);

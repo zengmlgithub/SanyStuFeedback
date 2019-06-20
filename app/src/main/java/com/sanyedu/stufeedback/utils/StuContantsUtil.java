@@ -9,4 +9,8 @@ public class StuContantsUtil {
     public final static String AUTHORIZATION = "Authorization";
 
     public static final String ID = "id";
+
+    public static final String TYPE_STUDENT = "1";
+    public static final String TYPE_TEACHER = "2";
+
 }

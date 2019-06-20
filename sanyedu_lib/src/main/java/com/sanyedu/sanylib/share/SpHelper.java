@@ -94,9 +94,9 @@ public class SpHelper {
     public static <T extends Object> T getObj(String key){
         SharedPreferences sharedPreferences=getPreferneces();
         String temp = sharedPreferences.getString(key, "");
-        ByteArrayInputStream bais =  new ByteArrayInputStream(Base64.decode(temp.getBytes(), Base64.DEFAULT));
         T userInfo = null;
         try {
+            ByteArrayInputStream bais =  new ByteArrayInputStream(Base64.decode(temp.getBytes(), Base64.DEFAULT));
             ObjectInputStream ois = new ObjectInputStream(bais);
             userInfo = (T) ois.readObject();
         } catch (IOException e) {
