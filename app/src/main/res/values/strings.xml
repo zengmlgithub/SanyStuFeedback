@@ -8,4 +8,7 @@
     <string name="tel_null">请输入电话号码</string>
     <string name="error_tel">电话号码不正确</string>
     <string name="modify_tel">修改电话</string>
+    <string name="all_feedback">全部反馈</string>
+    <string name="notice">通知</string>
+    <string name="feedback_my">反馈我的</string>
 </resources>

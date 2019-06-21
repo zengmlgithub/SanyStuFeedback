@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/all_feedback_iv"
+        android:drawableTop="@mipmap/all_feedback"
+        android:text="@string/all_feedback"
+       style="@style/main_operator_style"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notice_iv"
+        android:drawableTop="@mipmap/notice"
+        android:layout_toRightOf="@+id/all_feedback_iv"
+        android:text="@string/notice"
+        style="@style/main_operator_style"
+        android:layout_marginLeft="85dp"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_feedback_iv"
+        android:drawableTop="@mipmap/my_feedback"
+        android:layout_below="@+id/all_feedback_iv"
+        android:text="@string/my_feedback"
+        android:layout_marginTop="25dp"
+        style="@style/main_operator_style"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/feedback_my_iv"
+        android:drawableTop="@mipmap/feedback_my"
+        android:layout_toRightOf="@+id/all_feedback_iv"
+        android:layout_below="@+id/notice_iv"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="85dp"
+        android:text="@string/feedback_my"
+        style="@style/main_operator_style"
+        >
+    </TextView>
+
+</RelativeLayout>
