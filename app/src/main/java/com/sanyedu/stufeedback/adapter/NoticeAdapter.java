@@ -11,14 +11,14 @@ import android.widget.TextView;
 
 
 import com.sanyedu.stufeedback.R;
-import com.sanyedu.stufeedback.model.NoticeBean;
+import com.sanyedu.stufeedback.model.NoticeModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHolder> {
     private Context context;
-    private List<NoticeBean> mList = new ArrayList<>();
+    private List<NoticeModel> mList = new ArrayList<>();
     private LayoutInflater mInflater;
     private View view;
 
@@ -44,7 +44,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        NoticeBean noticeBean = mList.get(position);
+        NoticeModel noticeBean = mList.get(position);
 //        SanyLogs.i("onBindViewHolder:" + noticeBean.toString());
         if(noticeBean != null){
             holder.titleTv.setText(noticeBean.getTitle());
@@ -89,7 +89,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
         }
     }
 
-    public void setNoticeList(List<NoticeBean> list){
+    public void setNoticeList(List<NoticeModel> list){
         this.mList = list;
         notifyDataSetChanged();
     }

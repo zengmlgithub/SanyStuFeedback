@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class PageNoticeBean {
     private String current;
-    private ArrayList<NoticeBean> pNotice;
+    private ArrayList<NoticeModel> pNotice;
     private String pages;
     private String size;
     private String total;
 
-    public PageNoticeBean(String current, ArrayList<NoticeBean> pNotice, String pages, String size, String total) {
+    public PageNoticeBean(String current, ArrayList<NoticeModel> pNotice, String pages, String size, String total) {
         this.current = current;
         this.pNotice = pNotice;
         this.pages = pages;
@@ -28,11 +28,11 @@ public class PageNoticeBean {
         this.current = current;
     }
 
-    public ArrayList<NoticeBean> getpNotice() {
+    public ArrayList<NoticeModel> getpNotice() {
         return pNotice;
     }
 
-    public void setpNotice(ArrayList<NoticeBean> pNotice) {
+    public void setpNotice(ArrayList<NoticeModel> pNotice) {
         this.pNotice = pNotice;
     }
 

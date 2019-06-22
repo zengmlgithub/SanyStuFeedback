@@ -1,6 +1,6 @@
 package com.sanyedu.stufeedback.model;
 
-public class NoticeBean {
+public class NoticeModel {
     private String content;
     private String createtime;
     private String dept;
@@ -8,7 +8,7 @@ public class NoticeBean {
     private String pubName; //发布者名称
     private String title;
 
-    public NoticeBean(String content, String createtime, String dept, String id, String pubName, String title) {
+    public NoticeModel(String content, String createtime, String dept, String id, String pubName, String title) {
         this.content = content;
         this.createtime = createtime;
         this.dept = dept;
@@ -17,7 +17,7 @@ public class NoticeBean {
         this.title = title;
     }
 
-    public NoticeBean() {
+    public NoticeModel() {
     }
 
     public String getContent() {

@@ -3,13 +3,13 @@ package com.sanyedu.stufeedback.mvp.notice;
 
 import com.sanyedu.sanylib.mvp.IBasePresenter;
 import com.sanyedu.sanylib.mvp.IBaseView;
-import com.sanyedu.stufeedback.model.NoticeBean;
+import com.sanyedu.stufeedback.model.NoticeModel;
 
 import java.util.ArrayList;
 
 public final class NoticeContacts {
     public interface INoticeUI extends IBaseView {
-        void setNotices(ArrayList<NoticeBean> notices, int maxPageCount);
+        void setNotices(ArrayList<NoticeModel> notices, int maxPageCount);
 
         void setNoNotices();
 

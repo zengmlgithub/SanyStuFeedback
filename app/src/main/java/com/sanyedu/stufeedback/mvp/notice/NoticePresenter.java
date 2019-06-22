@@ -12,7 +12,7 @@ import com.sanyedu.sanylib.utils.CheckUtils;
 import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
-import com.sanyedu.stufeedback.model.NoticeBean;
+import com.sanyedu.stufeedback.model.NoticeModel;
 import com.sanyedu.stufeedback.model.PageNoticeBean;
 
 
@@ -65,7 +65,7 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
                         }else{
                             PageNoticeBean pageNoticeBean= response.getObj();
                             if(pageNoticeBean != null){
-                                ArrayList<NoticeBean> noticeList = pageNoticeBean.getpNotice();
+                                ArrayList<NoticeModel> noticeList = pageNoticeBean.getpNotice();
                                 if(noticeList != null && noticeList.size() > 0){
                                     int totalPageCount = Integer.valueOf(pageNoticeBean.getTotal());
                                     getView().setNotices(noticeList,totalPageCount);

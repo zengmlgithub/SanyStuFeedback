@@ -7,14 +7,13 @@ import android.view.View;
 
 import com.sanyedu.sanylib.base.SanyBaseActivity;
 import com.sanyedu.sanylib.log.SanyLogs;
-import com.sanyedu.sanylib.utils.StartUtils;
 import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.sanylib.widget.EmptyRecyclerView;
 import com.sanyedu.sanylib.wrapper.LoadMoreWrapper;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.adapter.NoticeAdapter;
 import com.sanyedu.stufeedback.listener.EndlessRecyclerOnScrollListener;
-import com.sanyedu.stufeedback.model.NoticeBean;
+import com.sanyedu.stufeedback.model.NoticeModel;
 import com.sanyedu.stufeedback.mvp.notice.NoticeContacts;
 import com.sanyedu.stufeedback.mvp.notice.NoticePresenter;
 
@@ -37,7 +36,7 @@ public class NoticeActivity extends SanyBaseActivity<NoticePresenter> implements
     @BindView(R.id.layout_empty_view)
     View emptyView;
 
-    private List<NoticeBean> currList = new ArrayList<>();
+    private List<NoticeModel> currList = new ArrayList<>();
 
     private final int PAGE_COUNT = 4;
 
@@ -124,7 +123,7 @@ public class NoticeActivity extends SanyBaseActivity<NoticePresenter> implements
     }
 
     @Override
-    public void setNotices(ArrayList<NoticeBean> notices, int maxPageCount) {
+    public void setNotices(ArrayList<NoticeModel> notices, int maxPageCount) {
         SanyLogs.i("recordsList:" + notices.size());
         hideLoading();
         //当列表为空时，这时有可能是下拉刷新,因此要设置下拉刷新的标志
