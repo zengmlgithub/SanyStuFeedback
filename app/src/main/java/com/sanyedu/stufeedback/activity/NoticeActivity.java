@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.sanyedu.sanylib.base.SanyBaseActivity;
 import com.sanyedu.sanylib.log.SanyLogs;
+import com.sanyedu.sanylib.utils.StartUtils;
 import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.sanylib.widget.EmptyRecyclerView;
 import com.sanyedu.sanylib.wrapper.LoadMoreWrapper;
@@ -91,7 +92,7 @@ public class NoticeActivity extends SanyBaseActivity<NoticePresenter> implements
             @Override
             public void onItemClick(View view, int position, String id) {
                 SanyLogs.i("noticeclick~~~~position:" +position + ",id:" + id);
-//                StartUtils.startActivity(this, NoticeDetailActivity.class,id);
+                StartUtils.startActivity(NoticeActivity.this, NoticeDetailActivity.class,id);
             }
         });
     }

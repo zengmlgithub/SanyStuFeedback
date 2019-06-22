@@ -12,4 +12,6 @@
     <string name="notice">通知</string>
     <string name="feedback_my">反馈我的</string>
     <string name="empty_tv">当前页没有任何数据</string>
+
+    <string name="important_notice_title">重要通知</string>
 </resources>
