@@ -16,10 +16,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends SanyBaseActivity<MainPresenter> implements MainContacts.IMainUI {
+
     @BindView(R.id.operator_rl)
     RelativeLayout operatorLayout;
 
-    @OnClick({R.id.all_feedback_iv,R.id.notice_iv,R.id.my_feedback_iv,R.id.feedback_my_iv,R.id.add_civ})
+    @OnClick({R.id.all_feedback_iv,R.id.notice_iv,R.id.my_feedback_iv,R.id.feedback_my_iv,R.id.add_civ,R.id.head_rl})
     public void myOnclick(View view){
         if (view.getId() == R.id.all_feedback_iv){
 //            StartUtils.startActivity();
@@ -36,6 +37,9 @@ public class MainActivity extends SanyBaseActivity<MainPresenter> implements Mai
             SanyLogs.i("goto all feedbackmy");
         }else if (view.getId() == R.id.add_civ){
             StartUtils.startActivity(MainActivity.this,GotoFeedbackActivity.class);
+        }else if(view.getId() == R.id.head_rl){
+            StartUtils.startActivity(MainActivity.this,PersonalActivity.class);
+            SanyLogs.i("goto all personal page");
         }
     }
 

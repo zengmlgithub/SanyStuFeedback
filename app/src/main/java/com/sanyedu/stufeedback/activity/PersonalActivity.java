@@ -36,6 +36,7 @@ import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.mvp.personal.PersonalContacts;
 import com.sanyedu.stufeedback.mvp.personal.PersonalPresenter;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -94,7 +95,7 @@ public class PersonalActivity extends SanyBaseActivity<PersonalPresenter> implem
     }
 
     private void setData() {
-        StudentModel userInfo = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel userInfo = SpHelper.getObj(StuContantsUtil.STUINFO);
         if(userInfo != null){
             nameTv.setText(userInfo.getUsername());
 //            departTv.setText(userInfo.getDe + "|" + userInfo.getTePosi());
