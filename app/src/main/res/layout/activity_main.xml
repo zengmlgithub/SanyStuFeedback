@@ -26,6 +26,7 @@
             style="@style/title_style"
             android:text="@string/name_test"
             android:layout_marginLeft="4dp"
+            android:id="@+id/head_tv"
             />
 
     </RelativeLayout>
