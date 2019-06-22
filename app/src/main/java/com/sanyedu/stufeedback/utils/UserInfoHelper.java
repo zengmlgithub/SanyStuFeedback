@@ -1,6 +1,8 @@
 package com.sanyedu.stufeedback.utils;
 
 
+import android.text.TextUtils;
+
 import com.sanyedu.sanylib.share.SpHelper;
 import com.sanyedu.sanylib.utils.ConstantUtil;
 import com.sanyedu.stufeedback.model.StudentModel;
@@ -35,4 +37,11 @@ public class UserInfoHelper {
         return tempDept;
     }
 
+    public static boolean isLogined(String info){
+        if(TextUtils.isEmpty(info)){
+            return false;
+        }
+        StudentModel studentModel = SpHelper.getObj(info);
+        return studentModel  != null && studentModel.getStuName() != null;
+    }
 }

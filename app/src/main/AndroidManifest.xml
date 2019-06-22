@@ -32,7 +32,8 @@
             android:name="design_height_in_dp"
             android:value="640"/>
 
-        <activity android:name=".activity.MainActivity"
+        <activity android:name=".activity.FirstActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +47,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
-        <activity android:name=".activity.FirstActivity"
+        <activity android:name=".activity.MainActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -95,6 +96,13 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
+
+
+        <activity android:name=".activity.NoticeActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

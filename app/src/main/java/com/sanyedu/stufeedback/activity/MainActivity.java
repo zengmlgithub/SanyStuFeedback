@@ -26,7 +26,8 @@ public class MainActivity extends SanyBaseActivity<MainPresenter> implements Mai
             SanyLogs.i("goto all feedback");
         }else if(view.getId() == R.id.notice_iv){
 //            StartUtils.startActivity();
-            SanyLogs.i("goto all notice");
+//            SanyLogs.i("goto all notice");
+            StartUtils.startActivity(MainActivity.this,NoticeActivity.class);
         }else if(view.getId() == R.id.my_feedback_iv){
 //            StartUtils.startActivity();
             SanyLogs.i("goto all myfeedback");

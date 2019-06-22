@@ -101,6 +101,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
                                 try {
                                     StudentModel userInfo = response.getObj().get(0);
+                                    SanyLogs.i(userInfo.toString());
                                     SpHelper.putObj(StuContantsUtil.STUINFO,userInfo);
                                     getView().startMain();
                                 }catch (Exception e){

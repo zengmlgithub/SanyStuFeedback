@@ -14,6 +14,8 @@ import com.sanyedu.sanylib.utils.ConstantUtil;
 import com.sanyedu.sanylib.utils.StartUtils;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.model.StudentModel;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
+import com.sanyedu.stufeedback.utils.UserInfoHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,13 +46,8 @@ public class FirstActivity extends SanyBaseActivity {
         return R.layout.activity_first;
     }
 
-    private boolean hasUserInfo() {
-        StudentModel studentModel = SpHelper.getObj(ConstantUtil.USERINFO);
-        return studentModel  != null && studentModel.getStuName() != null;
-    }
-
     private void goToNext(){
-        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
+        Class<?> clazz = UserInfoHelper.isLogined(StuContantsUtil.STUINFO)? MainActivity.class:LoginActivity.class;
         StartUtils.startActivity(FirstActivity.this,clazz);
         finish();
     }
