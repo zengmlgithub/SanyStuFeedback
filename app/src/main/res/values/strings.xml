@@ -14,4 +14,5 @@
     <string name="empty_tv">当前页没有任何数据</string>
 
     <string name="important_notice_title">重要通知</string>
+    <string name="notice_time">通知时间：</string>
 </resources>

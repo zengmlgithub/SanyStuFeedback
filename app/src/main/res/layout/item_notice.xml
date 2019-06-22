@@ -78,17 +78,15 @@
                 />
 
                 <TextView
-                        android:id="@+id/person_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:layout_toRightOf="@id/msg_tv"
-                        style="@style/content_size_style"
-                        android:layout_centerVertical="true"
-                        android:text="湖南三一工业职业技术学院"
-                        android:layout_toLeftOf="@+id/msg_date_tv"
-                        android:layout_marginRight="5dp"
-                />
+                    android:id="@+id/person_tv"
+                    style="@style/content_size_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toLeftOf="@+id/msg_date_tv"
+                    android:layout_toRightOf="@id/msg_tv" />
 
                 <TextView
                         android:id="@+id/msg_date_tv"
@@ -96,20 +94,18 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/date_tv"
-                        android:text="通知时间:"
+                        android:text="@string/notice_time"
                         style="@style/notice_title_size_style"
                 />
 
                 <TextView
-                        android:id="@+id/date_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:paddingRight="4dp"
-                        style="@style/content_size_style"
-                        android:text="2019-05-20 14:30"
-                />
+                    android:id="@+id/date_tv"
+                    style="@style/content_size_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="4dp" />
             </RelativeLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>

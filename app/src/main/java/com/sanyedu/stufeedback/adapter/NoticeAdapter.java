@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.sanyedu.sanylib.utils.SanyDataUtils;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.model.NoticeModel;
 
@@ -48,7 +49,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
 //        SanyLogs.i("onBindViewHolder:" + noticeBean.toString());
         if(noticeBean != null){
             holder.titleTv.setText(noticeBean.getTitle());
-            holder.dateTv.setText(noticeBean.getCreatetime());
+            String formatted = SanyDataUtils.getFormatStr(noticeBean.getCreatetime());
+            holder.dateTv.setText(formatted);
             holder.contentTv.setText(noticeBean.getContent());
             holder.personTv.setText(noticeBean.getPubName());
             final String id = noticeBean.getId();
