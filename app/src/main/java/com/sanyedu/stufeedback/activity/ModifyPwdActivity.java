@@ -19,6 +19,7 @@ import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.mvp.modifypwd.ModifyPwdContacts;
 import com.sanyedu.stufeedback.mvp.modifypwd.ModifyPwdPresenter;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -155,7 +156,8 @@ public class ModifyPwdActivity extends SanyBaseActivity<ModifyPwdPresenter> impl
     }
 
     private String originPwd(){
-        StudentModel studentModel = SpHelper.getObj(ConstantUtil.USERINFO);
+//        StudentModel studentModel = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel studentModel = SpHelper.getObj(StuContantsUtil.STUINFO);
         String password = studentModel.getPassword();
         return password;
     }
@@ -173,7 +175,8 @@ public class ModifyPwdActivity extends SanyBaseActivity<ModifyPwdPresenter> impl
     @OnClick(R.id.confirm_btn)
     public void submitPwd(){
         String type = "2";
-        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+//        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel bean = SpHelper.getObj(StuContantsUtil.STUINFO);
         if(bean != null){
             String id =  bean.getId();
             String username = bean.getUsername();

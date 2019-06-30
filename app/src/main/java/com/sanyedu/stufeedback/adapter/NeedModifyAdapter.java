@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sanyedu.sanylib.log.SanyLogs;
-import com.sanyedu.sanylib.model.RecordsBean;
 import com.sanyedu.stufeedback.R;
+import com.sanyedu.stufeedback.model.Records;
 import com.sanyedu.stufeedback.utils.StatusUtils;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
 public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.MyViewHolder> {
 
     private Context context;
-    private List<RecordsBean> recordsList = new ArrayList<>();
+    private List<Records> recordsList = new ArrayList<>();
     private LayoutInflater inflater;
     private View view;
 
@@ -41,7 +41,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final RecordsBean records = recordsList.get(position);
+        final Records records = recordsList.get(position);
 //        SanyLogs.i("onBindViewHolder~~~records:" + records.toString());
         if (records != null){
 //            holder.headIv.setBackground(null);
@@ -117,7 +117,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
         }
     }
 
-    public void setRecordsList(List<RecordsBean> recordsList) {
+    public void setRecordsList(List<Records> recordsList) {
         SanyLogs.i("NeedModifyAdapter~~~~setRecordsList.size=" + recordsList.size());
         this.recordsList = recordsList;
         notifyDataSetChanged();

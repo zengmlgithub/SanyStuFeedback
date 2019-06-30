@@ -15,4 +15,7 @@
 
     <string name="important_notice_title">重要通知</string>
     <string name="notice_time">通知时间：</string>
+    <string name="please_input_content">请输入内容</string>
+    <string name="please_choose_depart">请选择部门</string>
+    <string name="please_choose_person">请选责任人</string>
 </resources>

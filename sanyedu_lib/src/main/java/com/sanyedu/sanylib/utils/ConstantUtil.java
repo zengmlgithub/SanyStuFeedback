@@ -26,7 +26,7 @@ public class ConstantUtil {
     public static final String TEL = "tel" ;
 
     //sp---个人信息
-    public static final String USERINFO = "userinfo";
+//    public static final String USERINFO = "userinfo";
 
     public static final String FK_STATE_SUBMITED = "1";  //已提交
     public static final String FK_STATE_CHECKED = "2"; //已审核

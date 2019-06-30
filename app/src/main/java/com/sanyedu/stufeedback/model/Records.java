@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 bejson.com
  */
-package com.sanyedu.sanylib.model;
+package com.sanyedu.stufeedback.model;
 
 /**
  * Auto-generated: 2019-05-22 11:28:41
@@ -9,7 +9,7 @@ package com.sanyedu.sanylib.model;
  * @author zengmaolin
  * @website http://www.bejson.com/java2pojo/
  */
-public class RecordsBean extends BaseModel{
+public class Records {
 
     private String feedbackAdress;
     private String feedbackContent;

@@ -9,7 +9,7 @@ import com.sanyedu.stufeedback.model.StudentModel;
 
 public class UserInfoHelper {
     public static String getPersonId(){
-        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel bean = SpHelper.getObj(StuContantsUtil.STUINFO);
         String tempId = "";
         if(bean != null){
             tempId = bean.getId();
@@ -19,7 +19,7 @@ public class UserInfoHelper {
     }
 
     public static String getPersonName() {
-        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel bean = SpHelper.getObj(StuContantsUtil.STUINFO);
         String tempName = "";
         if(bean != null){
             tempName = bean.getStuName();
@@ -28,11 +28,13 @@ public class UserInfoHelper {
     }
 
     public static String getPersonDept(){
-        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel bean = SpHelper.getObj(StuContantsUtil.STUINFO);
         String tempDept = "";
         if(bean != null){
 //            tempDept = bean.getStuDept();
+            tempDept = "工程机械学院";
             //TODO：学生没有系
+
         }
         return tempDept;
     }

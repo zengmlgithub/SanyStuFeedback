@@ -16,6 +16,7 @@ import com.sanyedu.sanylib.share.SpHelper;
 import com.sanyedu.sanylib.utils.CheckUtils;
 import com.sanyedu.sanylib.utils.ConstantUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +89,8 @@ public class ModifyEmailActivity extends SanyBaseActivity<ModifyInfoPresenter> i
     }
 
     private StudentModel createNewTeacher() {
-        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+//        StudentModel bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel bean = SpHelper.getObj(StuContantsUtil.STUINFO);
         StudentModel tempBean = new StudentModel();
         tempBean.setId(bean.getId());
         return tempBean;

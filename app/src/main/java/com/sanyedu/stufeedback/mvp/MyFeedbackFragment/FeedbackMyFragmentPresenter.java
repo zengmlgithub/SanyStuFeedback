@@ -7,12 +7,12 @@ import android.text.TextUtils;
 import com.sanyedu.sanylib.log.SanyLogs;
 import com.sanyedu.sanylib.model.BaseModel;
 import com.sanyedu.sanylib.model.BaseModelCallback;
-import com.sanyedu.sanylib.model.PageRecordBean;
-import com.sanyedu.sanylib.model.RecordsBean;
 import com.sanyedu.sanylib.mvp.BasePresenter;
 import com.sanyedu.sanylib.okhttp.OkHttpUtils;
 import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
+import com.sanyedu.stufeedback.model.PageRecordBean;
+import com.sanyedu.stufeedback.model.Records;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class FeedbackMyFragmentPresenter extends BasePresenter<CommonFeedbackFra
 
                                 PageRecordBean noticeBean = response.getObj();
                                 if (noticeBean != null){
-                                    List<RecordsBean> recordsList = noticeBean.getRecords();
+                                    List<Records> recordsList = noticeBean.getRecords();
 //                                    SanyLogs.i("sanyLog~~~~~~111111");
                                     if (recordsList != null && recordsList.size() > 0){
 //                                        SanyLogs.i("sanyLog~~~~~~222222");

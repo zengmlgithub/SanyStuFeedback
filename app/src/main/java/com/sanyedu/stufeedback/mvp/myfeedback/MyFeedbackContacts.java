@@ -1,15 +1,15 @@
 package com.sanyedu.stufeedback.mvp.myfeedback;
 
 
-import com.sanyedu.sanylib.model.RecordsBean;
 import com.sanyedu.sanylib.mvp.IBasePresenter;
 import com.sanyedu.sanylib.mvp.IBaseView;
+import com.sanyedu.stufeedback.model.Records;
 
 import java.util.List;
 
 public final class MyFeedbackContacts {
     public interface IMyFeedbackUI extends IBaseView {
-        public void setMyFeedbacks(List<RecordsBean> recordsList);
+        public void setMyFeedbacks(List<Records> recordsList);
     }
 
     public interface IMyFeedbackPresenter extends IBasePresenter {

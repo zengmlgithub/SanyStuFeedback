@@ -1,26 +1,26 @@
 package com.sanyedu.stufeedback.mvp.gotofeedback;
 
 import android.support.annotation.NonNull;
+
 import android.text.TextUtils;
 
 import com.sanyedu.sanylib.log.SanyLogs;
 import com.sanyedu.sanylib.model.BaseModel;
 import com.sanyedu.sanylib.model.BaseModelCallback;
-
 import com.sanyedu.sanylib.mvp.BasePresenter;
-import com.sanyedu.stufeedback.model.DepartModel;
-import com.sanyedu.stufeedback.model.FeedbackItem;
-import com.sanyedu.stufeedback.model.PersonModel;
-import com.sanyedu.stufeedback.mvp.UpdatePicture.UpdatePictureService;
 import com.sanyedu.sanylib.okhttp.OkHttpUtils;
 import com.sanyedu.sanylib.utils.CheckUtils;
 import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
-
-import java.util.List;
+import com.sanyedu.stufeedback.model.DepartModel;
+import com.sanyedu.stufeedback.model.FeedbackItem;
+import com.sanyedu.stufeedback.model.PersonModel;
+import com.sanyedu.stufeedback.mvp.UpdatePicture.UpdatePictureService;
 
 import okhttp3.Call;
+
+import java.util.List;
 
 public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IGotoFeedbackUI> implements GotoFeedbackContacts.IGoToFeedbackPresenter {
 
@@ -94,23 +94,24 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                getView().updateFeedbackFailure(ErrorUtils.SERVER_ERROR);
                             }
 
                             @Override
                             public void onResponse(BaseModel<List<PersonModel>> response, int id) {
                                 if (response == null) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().updateFeedbackFailure(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
                                 SanyLogs.i("getfeedback:" + response.toString());
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().updateFeedbackFailure(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 
                                 if (!"1".equals(code)) {
-                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().updateFeedbackFailure(response.getInfo());
                                     return;
                                 }
 
@@ -118,7 +119,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                                 if (personBeans != null && personBeans.size() > 0) {
                                     getView().setPersonList(personBeans);
                                 } else {
-                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().updateFeedbackFailure(response.getInfo());
                                 }
                             }
                         }
@@ -135,6 +136,17 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
         SanyLogs.i(item.toString());
 
         String url = HttpUtil.getPort(HttpUtil.POST_FEEDBACK_TO_SERVER_PORT);
+
+        String toResponsibleId = item.getToResponsibleid();
+        if(TextUtils.isEmpty(toResponsibleId)){
+            toResponsibleId = "-1";
+        }
+
+        String toResponsibleName = item.getToResponsiblename();
+        if(TextUtils.isEmpty(toResponsibleName)){
+            toResponsibleName = "-1";
+        }
+
         OkHttpUtils
                 .post()
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_TITLE, item.getFeedbackTitle())
@@ -146,9 +158,9 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_A, item.getFeedbackA())
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_B, item.getFeedbackB())
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_C, item.getFeedbackC())
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBL_NAME, item.getToResponsiblename())
+                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBL_NAME, toResponsibleName)
                 .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_DEPT, item.getToResponsibledept())
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_ID, item.getToResponsibleid())
+                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_ID, toResponsibleId)
                 .url(url)
                 .build()
                 .execute(
@@ -157,23 +169,24 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                getView().updateFeedbackFailure(ErrorUtils.SERVER_ERROR);
                             }
 
                             @Override
                             public void onResponse(BaseModel<String> response, int id) {
                                 if (response == null) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().updateFeedbackFailure(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
                                 SanyLogs.i("getfeedback:" + response.toString());
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().updateFeedbackFailure(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 
                                 if (!"1".equals(code)) {
-                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().updateFeedbackFailure(response.getInfo());
                                     return;
                                 }
 

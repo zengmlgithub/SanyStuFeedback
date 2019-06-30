@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 bejson.com
  */
-package com.sanyedu.sanylib.model;
+package com.sanyedu.stufeedback.model;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ import java.util.List;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class PageRecordBean extends BaseModel {
+public class PageRecordBean {
 
     private String current;
     private String pages;
-    private List<RecordsBean> records;
+    private List<Records> records;
     private int size;
     private String total;
 
@@ -35,11 +35,11 @@ public class PageRecordBean extends BaseModel {
         return pages;
     }
 
-    public void setRecords(List<RecordsBean> records) {
+    public void setRecords(List<Records> records) {
         this.records = records;
     }
 
-    public List<RecordsBean> getRecords() {
+    public List<Records> getRecords() {
         return records;
     }
 

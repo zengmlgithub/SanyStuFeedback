@@ -6,11 +6,11 @@ import android.support.v4.view.ViewPager;
 
 
 import com.sanyedu.sanylib.base.SanyBaseActivity;
-import com.sanyedu.sanylib.model.RecordsBean;
 import com.sanyedu.sanylib.utils.StartUtils;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.adapter.FeedbackAdapter;
 import com.sanyedu.stufeedback.fragment.BaseFeedbackMyFragment;
+import com.sanyedu.stufeedback.model.Records;
 import com.sanyedu.stufeedback.mvp.myfeedback.MyFeedbackContacts;
 import com.sanyedu.stufeedback.mvp.myfeedback.MyFeedbackPresenter;
 
@@ -85,7 +85,7 @@ public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackCo
     }
 
     @Override
-    public void setMyFeedbacks(List<RecordsBean> recordsList) {
+    public void setMyFeedbacks(List<Records> recordsList) {
 
     }
 }

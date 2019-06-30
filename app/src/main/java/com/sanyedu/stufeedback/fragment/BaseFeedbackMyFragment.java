@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.sanyedu.sanylib.base.BaseFragment;
 import com.sanyedu.sanylib.log.SanyLogs;
-import com.sanyedu.sanylib.model.RecordsBean;
 import com.sanyedu.sanylib.share.SpHelper;
 import com.sanyedu.sanylib.utils.ConstantUtil;
 import com.sanyedu.sanylib.utils.ErrorUtils;
@@ -24,9 +23,11 @@ import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.activity.ModifyDetailActivity;
 import com.sanyedu.stufeedback.adapter.NeedModifyAdapter;
 import com.sanyedu.stufeedback.listener.EndlessRecyclerOnScrollListener;
+import com.sanyedu.stufeedback.model.Records;
 import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.mvp.MyFeedbackFragment.CommonFeedbackFragmentContacts;
 import com.sanyedu.stufeedback.mvp.MyFeedbackFragment.FeedbackMyFragmentPresenter;
+import com.sanyedu.stufeedback.utils.StuContantsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
 
 //    private RecyclerView listView;
     private NeedModifyAdapter recordAdapter;
-    private List<RecordsBean> currList = new ArrayList<>();
+    private List<Records> currList = new ArrayList<>();
     private final int PAGE_COUNT = 4;
     private LoadMoreWrapper loadMoreWrapper;
     private int currentPage = 1;
@@ -200,7 +201,7 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
     }
 
     @Override
-    public void setFeebacks(List<RecordsBean> recordsList,int maxCount) {
+    public void setFeebacks(List<Records> recordsList, int maxCount) {
 
         SanyLogs.i("recordsList:" + recordsList.size());
 
@@ -244,7 +245,8 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
     }
 
     private void getDataFromServer() {
-        StudentModel model = SpHelper.getObj(ConstantUtil.USERINFO);
+//        StudentModel model = SpHelper.getObj(ConstantUtil.USERINFO);
+        StudentModel model =SpHelper.getObj(StuContantsUtil.STUINFO);
         if(model != null){
             SanyLogs.i("get id:" + model.getId() + ",type:" + mParam1);
             getPresenter().getFeedbacks(currentPage + "",PAGE_COUNT + "",model.getId(),mParam1);

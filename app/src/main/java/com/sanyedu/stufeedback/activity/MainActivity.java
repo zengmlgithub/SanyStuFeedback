@@ -14,7 +14,6 @@ import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.mvp.MainInfo.MainContacts;
 import com.sanyedu.stufeedback.mvp.MainInfo.MainPresenter;
 import com.sanyedu.stufeedback.utils.StuContantsUtil;
-import com.sanyedu.stufeedback.utils.UserInfoHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,10 +35,11 @@ public class MainActivity extends SanyBaseActivity<MainPresenter> implements Mai
 //            SanyLogs.i("goto all notice");
             StartUtils.startActivity(MainActivity.this,NoticeActivity.class);
         }else if(view.getId() == R.id.my_feedback_iv){
-//            StartUtils.startActivity();
-            SanyLogs.i("goto all myfeedback");
+            StartUtils.startActivity(MainActivity.this,MyFeedbackActivity.class);
+//            SanyLogs.i("goto all myfeedback");
         }else if(view.getId() == R.id.feedback_my_iv){
 //            StartUtils.startActivity();
+            StartUtils.startActivity(MainActivity.this,FeedbackMyActivity.class);
             SanyLogs.i("goto all feedbackmy");
         }else if (view.getId() == R.id.add_civ){
             StartUtils.startActivity(MainActivity.this,GotoFeedbackActivity.class);
