@@ -38,7 +38,7 @@ public class EditTextWithDel extends AppCompatEditText {
 
     private void init() {
         imgAble = mContext.getResources().getDrawable(
-                R.drawable.icon_del);
+                R.mipmap.icon_del);
         addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before,
