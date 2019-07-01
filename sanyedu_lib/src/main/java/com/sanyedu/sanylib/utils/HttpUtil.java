@@ -19,13 +19,6 @@ public class HttpUtil {
     public static final String HTTPS = "https://";
     public static final String HTTP = "http://";
 
-    public static final String TEST_PORT = "testClass/testSel";
-
-    public static final String SUCCESS = "1";
-    public static final String ERROR_ACCOUNT = "0"; //账号密码错误
-    public static final String ERROR_SYSTEM_EXCEPTION = "400";//系统异常
-    public static final String ERROR_SERVER = "服务器出错啦";
-
     private static final String getServerHost() {
         String prot = IS_HTTP ? HTTP : HTTPS;
         String server = IS_TEST ? TEST_SERVER : FINAL_SERVER;

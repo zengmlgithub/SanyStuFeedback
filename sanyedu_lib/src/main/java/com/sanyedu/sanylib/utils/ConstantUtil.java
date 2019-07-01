@@ -20,14 +20,6 @@ public class ConstantUtil {
 
     public final static String TOKEN = "token";
 
-    public final static String AUTHORIZATION = "Authorization";
-    public static final String USERNAME = "username";
-    public static final String PASSWORD = "password";
-    public static final String TEL = "tel" ;
-
-    //sp---个人信息
-//    public static final String USERINFO = "userinfo";
-
     public static final String FK_STATE_SUBMITED = "1";  //已提交
     public static final String FK_STATE_CHECKED = "2"; //已审核
     public static final String FK_STATE_WATIIING_MODIFED = "3";

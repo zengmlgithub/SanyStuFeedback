@@ -57,10 +57,10 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                             SanyLogs.i(tokenModel.toString());
                             String code = tokenModel.getCode();
                             if (!TextUtils.isEmpty(code)) {
-                                if (HttpUtil.SUCCESS.equals(code)) {
+                                if (StuHttpUtil.SUCCESS.equals(code)) {
                                     SpHelper.putString(StuContantsUtil.TOKEN, tokenModel.getToken());
                                     getLogin(userName, password, regFlag);
-                                } else if (HttpUtil.ERROR_ACCOUNT.equals(code)) {
+                                } else if (StuHttpUtil.ERROR_ACCOUNT.equals(code)) {
                                     //TODO:error
                                     SanyLogs.i("getToken:error-----");
                                     getView().loginFailure(StuErrorUtil.ACCOUNT_ERROR);
@@ -94,7 +94,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
-                                getView().loginFailure(HttpUtil.ERROR_SERVER);
+                                getView().loginFailure(StuHttpUtil.ERROR_SERVER);
                             }
 
                             @Override
@@ -107,7 +107,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                     getView().startMain();
                                 }catch (Exception e){
                                     SanyLogs.i(e.toString());
-                                    getView().loginFailure(HttpUtil.ERROR_SERVER);
+                                    getView().loginFailure(StuHttpUtil.ERROR_SERVER);
                                 }
 
                             }
