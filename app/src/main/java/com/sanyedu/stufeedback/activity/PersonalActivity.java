@@ -37,6 +37,7 @@ import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.mvp.personal.PersonalContacts;
 import com.sanyedu.stufeedback.mvp.personal.PersonalPresenter;
 import com.sanyedu.stufeedback.utils.StuContantsUtil;
+import com.sanyedu.stufeedback.utils.UserInfoHelper;
 
 import java.io.File;
 import java.io.InputStream;
@@ -46,6 +47,8 @@ import static com.sanyedu.sanylib.utils.ConstantUtil.IMAGE_FILE_NAME;
 import static com.sanyedu.sanylib.utils.ConstantUtil.REQUEST_IMAGE_CAPTURE;
 import static com.sanyedu.sanylib.utils.ConstantUtil.REQUEST_IMAGE_GET;
 import static com.sanyedu.sanylib.utils.ConstantUtil.REQUEST_SMALL_IMAGE_CUTTING;
+import static com.sanyedu.stufeedback.utils.StuContantsUtil.FEEDBACK_MAIN;
+import static com.sanyedu.stufeedback.utils.StuContantsUtil.MAIN_FEEDBACK;
 
 
 /**
@@ -95,17 +98,22 @@ public class PersonalActivity extends SanyBaseActivity<PersonalPresenter> implem
     }
 
     private void setData() {
-        StudentModel userInfo = SpHelper.getObj(StuContantsUtil.STUINFO);
-        if(userInfo != null){
-            nameTv.setText(userInfo.getUsername());
-//            departTv.setText(userInfo.getDe + "|" + userInfo.getTePosi());
 
-            emailTv.setText(userInfo.getStuEmai());
-            telTv.setText(userInfo.getStuPhone());
-            cardTv.setText(userInfo.getStuNum());
-            posTv.setText("湖南三一工业职业技术学院");
-        }
+        initUserInfo();
+        setListener();
 
+        initFeedbackCount();
+
+
+    }
+
+    private void initFeedbackCount() {
+        String id = UserInfoHelper.getPersonId();
+        getPresenter().getMyInfoNum(id, FEEDBACK_MAIN);
+        getPresenter().getMyInfoNum(id, MAIN_FEEDBACK);
+    }
+
+    private void setListener() {
         myFeedbackRl.setOnClickListener(this);
         feedbackMyRl.setOnClickListener(this);
         settingIv.setOnClickListener(this);
@@ -117,8 +125,19 @@ public class PersonalActivity extends SanyBaseActivity<PersonalPresenter> implem
 
         emailRl.setOnClickListener(this);
         telRl.setOnClickListener(this);
+    }
 
+    private void  initUserInfo(){
+        StudentModel userInfo = SpHelper.getObj(StuContantsUtil.STUINFO);
+        if(userInfo != null){
+            nameTv.setText(userInfo.getUsername());
+//            departTv.setText(userInfo.getTeDept() + "|" + userInfo.getTePosi());
 
+            emailTv.setText(userInfo.getStuEmai());
+            telTv.setText(userInfo.getStuPhone());
+            cardTv.setText(userInfo.getStuNum());
+            posTv.setText("湖南三一工业职业技术学院");
+        }
     }
 
     private void findViews() {
@@ -400,6 +419,18 @@ public class PersonalActivity extends SanyBaseActivity<PersonalPresenter> implem
         intent.putExtra("noFaceDetection", true); // no face detection
         startActivityForResult(intent, REQUEST_SMALL_IMAGE_CUTTING);
     }
+
+    @Override
+    public void showMyFeedbackNumber(int count) {
+        myFeedbackTv.setText(count + "");
+    }
+
+    @Override
+    public void showFeedbackMyNumber(int count) {
+        feedbackMyTv.setText(count + "");
+
+    }
+
 
 
     private Dialog createDialog() {

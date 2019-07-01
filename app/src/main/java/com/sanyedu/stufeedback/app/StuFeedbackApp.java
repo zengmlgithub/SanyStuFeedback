@@ -6,6 +6,7 @@ import com.sanyedu.sanylib.base.SanyEdu;
 import com.sanyedu.sanylib.imageloader.ImageLoader;
 import com.sanyedu.sanylib.log.SanyLogs;
 import com.sanyedu.stufeedback.imageloader.PicassoLoader;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import me.jessyan.autosize.AutoSizeConfig;
 
@@ -19,6 +20,9 @@ public class StuFeedbackApp extends Application {
         SanyLogs.d("start app..");
         super.onCreate();
         gApp = this;
+
+        //bugly需要的初始化
+        CrashReport.initCrashReport(getApplicationContext(), "8286a2d262", false);
 
         //增加自动适配方案
         AutoSizeConfig.getInstance().setCustomFragment(true);

@@ -23,6 +23,8 @@ public class StuHttpUtil {
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
     public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
 
+    public static final String GET_MY_FEEDBACK_COUNT_PORT = "academic/selMyInfoNum";//获取条数
+
     public static class CloseFeedback{
         public static final String FEEDBACK_ID = "id";
         public static final String FEEDBACK_CONTENT = "feedbackContent";
@@ -47,5 +49,10 @@ public class StuHttpUtil {
         public final static String START_PAGE="startPage";
         public final static String EVERY_PAGE="everyPage";
         public final static String TYPE = "type";
+    }
+
+    public static class MyFeedbackCount{
+        public static final String ID = "id";
+        public static final String TYPE = "type";
     }
 }

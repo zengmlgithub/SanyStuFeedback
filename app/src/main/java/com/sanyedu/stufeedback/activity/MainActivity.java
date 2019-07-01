@@ -48,7 +48,6 @@ public class MainActivity extends SanyBaseActivity<MainPresenter> implements Mai
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
