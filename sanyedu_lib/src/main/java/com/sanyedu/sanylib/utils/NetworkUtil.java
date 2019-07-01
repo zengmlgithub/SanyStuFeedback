@@ -3,12 +3,9 @@ package com.sanyedu.sanylib.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.text.TextUtils;
 
 /**
- * 网络工具类
- *
- * create by 邹峰立 on 2016/9/18
+ * modified by zengmaolin on 2019/07/02
  */
 public class NetworkUtil {
 
@@ -33,30 +30,30 @@ public class NetworkUtil {
      *
      * @return 0：没有网络 1：WIFI网络 2：WAP网络 3：NET网络
      */
-    public static int getNetworkType(Context context) {
-        int netType = 0;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = null;
-        if (connectivityManager != null) {
-            networkInfo = connectivityManager.getActiveNetworkInfo();
-        }
-        if (networkInfo == null) {
-            return netType;
-        }
-        int nType = networkInfo.getType();
-        if (nType == ConnectivityManager.TYPE_MOBILE) {
-            String extraInfo = networkInfo.getExtraInfo();
-            if (!TextUtils.isEmpty(extraInfo)) {
-                if (extraInfo.toLowerCase().equals("cmnet")) {
-                    netType = NETTYPE_CMNET;
-                } else {
-                    netType = NETTYPE_CMWAP;
-                }
-            }
-        } else if (nType == ConnectivityManager.TYPE_WIFI) {
-            netType = NETTYPE_WIFI;
-        }
-        return netType;
-    }
+//    public static int getNetworkType(Context context) {
+//        int netType = 0;
+//        ConnectivityManager connectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo networkInfo = null;
+//        if (connectivityManager != null) {
+//            networkInfo = connectivityManager.getActiveNetworkInfo();
+//        }
+//        if (networkInfo == null) {
+//            return netType;
+//        }
+//        int nType = networkInfo.getType();
+//        if (nType == ConnectivityManager.TYPE_MOBILE) {
+//            String extraInfo = networkInfo.getExtraInfo();
+//            if (!TextUtils.isEmpty(extraInfo)) {
+//                if (extraInfo.toLowerCase().equals("cmnet")) {
+//                    netType = NETTYPE_CMNET;
+//                } else {
+//                    netType = NETTYPE_CMWAP;
+//                }
+//            }
+//        } else if (nType == ConnectivityManager.TYPE_WIFI) {
+//            netType = NETTYPE_WIFI;
+//        }
+//        return netType;
+//    }
 
 }

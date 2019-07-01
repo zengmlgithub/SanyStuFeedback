@@ -14,7 +14,6 @@ public class TypeUtils {
                 SanyLogs.i("number error!");
             }
         }
-
         return temp;
     }
 }

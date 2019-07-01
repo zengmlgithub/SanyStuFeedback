@@ -38,11 +38,11 @@ public class ModifyPwdPresenter extends BasePresenter<ModifyPwdContacts.IModifyP
                 .post()
                 .url(url)
 //                .addHeader(ConstantUtil.AUTHORIZATION, tokenValue)
-                .addParams(HttpUtil.UpdatePwd.TYPE, type)
-                .addParams(HttpUtil.UpdatePwd.ID,id)
-                .addParams(HttpUtil.UpdatePwd.USERNAME,userName)
-                .addParams(HttpUtil.UpdatePwd.PASSWORD,oldpwd)
-                .addParams(HttpUtil.UpdatePwd.NewPassword,newPwd)
+                .addParams(StuHttpUtil.UpdatePwd.TYPE, type)
+                .addParams(StuHttpUtil.UpdatePwd.ID,id)
+                .addParams(StuHttpUtil.UpdatePwd.USERNAME,userName)
+                .addParams(StuHttpUtil.UpdatePwd.PASSWORD,oldpwd)
+                .addParams(StuHttpUtil.UpdatePwd.NewPassword,newPwd)
                 .build()
                 .execute(
                         new BaseModelCallback<String>(){

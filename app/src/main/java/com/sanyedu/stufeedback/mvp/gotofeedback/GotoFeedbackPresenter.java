@@ -86,7 +86,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
         String url = HttpUtil.getPort(StuHttpUtil.GET_ONE_DEPART_TEACHER_PORT);
         OkHttpUtils
                 .post()
-                .addParams(HttpUtil.OneDepartTeacher.DEPART_ID, departId)
+                .addParams(StuHttpUtil.OneDepartTeacher.DEPART_ID, departId)
                 .url(url)
                 .build()
                 .execute(
@@ -150,18 +150,18 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
         OkHttpUtils
                 .post()
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_TITLE, item.getFeedbackTitle())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_ADDRESS, item.getFeedbackAddress())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_CONTENT, item.getFeedbackContent())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_DEPT, item.getFeedbackDept())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_PERSON_ID, item.getFeedbackPersonid())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_PERSON_NAME, item.getFeedbackPersonname())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_A, item.getFeedbackA())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_B, item.getFeedbackB())
-                .addParams(HttpUtil.FeedbackToServer.FEEDBACK_C, item.getFeedbackC())
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBL_NAME, toResponsibleName)
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_DEPT, item.getToResponsibledept())
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_ID, toResponsibleId)
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_TITLE, item.getFeedbackTitle())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_ADDRESS, item.getFeedbackAddress())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_CONTENT, item.getFeedbackContent())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_DEPT, item.getFeedbackDept())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_PERSON_ID, item.getFeedbackPersonid())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_PERSON_NAME, item.getFeedbackPersonname())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_A, item.getFeedbackA())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_B, item.getFeedbackB())
+                .addParams(StuHttpUtil.FeedbackToServer.FEEDBACK_C, item.getFeedbackC())
+                .addParams(StuHttpUtil.FeedbackToServer.TO_RESPONSIBL_NAME, toResponsibleName)
+                .addParams(StuHttpUtil.FeedbackToServer.TO_RESPONSIBLE_DEPT, item.getToResponsibledept())
+                .addParams(StuHttpUtil.FeedbackToServer.TO_RESPONSIBLE_ID, toResponsibleId)
                 .url(url)
                 .build()
                 .execute(

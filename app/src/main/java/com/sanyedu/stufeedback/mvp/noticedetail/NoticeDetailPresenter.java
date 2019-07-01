@@ -29,7 +29,7 @@ public class NoticeDetailPresenter extends BasePresenter<NoticeDetailContacts.IN
         OkHttpUtils
                 .get()
                 .url(url)
-                .addParams(HttpUtil.NoticeDetail.ID, id)
+                .addParams(StuHttpUtil.NoticeDetail.ID, id)
                 .build()
                 .execute(new BaseModelCallback<NoticeDetailBean>(){
 

@@ -3,7 +3,7 @@ package com.sanyedu.sanylib.utils;
 /**
  * 常量管理类
  * <p>
- * Created by 邹峰立 on 2018/3/5.
+ * Created by zengmaolin on 2019/07/02
  */
 public class ConstantUtil {
     /**

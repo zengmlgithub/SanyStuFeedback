@@ -34,10 +34,10 @@ public class MyFeedbackFragmentPresenter extends BasePresenter<CommonFeedbackFra
                 .post()
                 .url(url)
 //                .addHeader(ConstantUtil.AUTHORIZATION, tokenValue)
-                .addParams(HttpUtil.TodayFeedback.START_PAGE, startPage)
-                .addParams(HttpUtil.TodayFeedback.EVERY_PAGE,everyPage)
-                .addParams(HttpUtil.TodayFeedback.TYPE,type)
-                .addParams(HttpUtil.MyFeedback.ID,id)
+                .addParams(StuHttpUtil.TodayFeedback.START_PAGE, startPage)
+                .addParams(StuHttpUtil.TodayFeedback.EVERY_PAGE,everyPage)
+                .addParams(StuHttpUtil.TodayFeedback.TYPE,type)
+                .addParams(StuHttpUtil.MyFeedback.ID,id)
                 .build()
                 .execute(
                         new BaseModelCallback<PageRecordBean>(){

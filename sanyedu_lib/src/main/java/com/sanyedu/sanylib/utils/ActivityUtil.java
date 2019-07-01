@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Activity工具类
  *
- * @author 邹峰立
+ * @author zengmaolin
  */
 public class ActivityUtil {
     private List<Activity> activityList = new ArrayList<>();

@@ -47,10 +47,10 @@ public class MyFeedbackPresenter extends BasePresenter<MyFeedbackContacts.IMyFee
                 .post()
                 .url(url)
 //                .addHeader(ConstantUtil.AUTHORIZATION, tokenValue)
-                .addParams(HttpUtil.MyFeedback.START_PAGE, startPage)
-                .addParams(HttpUtil.MyFeedback.EVERY_PAGE,everyPage)
-                .addParams(HttpUtil.MyFeedback.ID,id)
-                .addParams(HttpUtil.MyFeedback.TYPE,type)
+                .addParams(StuHttpUtil.MyFeedback.START_PAGE, startPage)
+                .addParams(StuHttpUtil.MyFeedback.EVERY_PAGE,everyPage)
+                .addParams(StuHttpUtil.MyFeedback.ID,id)
+                .addParams(StuHttpUtil.MyFeedback.TYPE,type)
                 .build()
                 .execute(
                         new BaseModelCallback<PageRecordBean>(){

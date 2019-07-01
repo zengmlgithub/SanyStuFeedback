@@ -34,8 +34,8 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoContacts.IModif
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams(HttpUtil.UpdateObj.TYPE, type)
-                .addParams(HttpUtil.UpdateObj.TE_USER,obj)
+                .addParams(StuHttpUtil.UpdateObj.TYPE, type)
+                .addParams(StuHttpUtil.UpdateObj.TE_USER,obj)
                 .build()
                 .execute(
                         new BaseModelCallback<String>(){

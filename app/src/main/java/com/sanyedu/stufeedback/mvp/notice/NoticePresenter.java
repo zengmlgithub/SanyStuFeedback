@@ -39,8 +39,8 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams(HttpUtil.Notice.START_PAGE, startPage)
-                .addParams(HttpUtil.Notice.EVERY_PAGE, pageCount)
+                .addParams(StuHttpUtil.Notice.START_PAGE, startPage)
+                .addParams(StuHttpUtil.Notice.EVERY_PAGE, pageCount)
                 .build()
                 .execute(new BaseModelCallback<PageNoticeBean>(){
 

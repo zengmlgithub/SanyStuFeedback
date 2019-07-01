@@ -32,7 +32,7 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams(HttpUtil.MoDifiedDetail.ID, id)
+                .addParams(StuHttpUtil.MoDifiedDetail.ID, id)
                 .build()
                 .execute(
                         new BaseModelCallback<DetailModel>(){

@@ -63,4 +63,62 @@ public class StuHttpUtil {
         public static final String ID = "id";
         public static final String TYPE = "type";
     }
+
+    public  class Notice{
+        public final static String START_PAGE="startPage";
+        public final static String EVERY_PAGE="everyPage";
+    }
+
+    public class NoticeDetail{
+        public final static  String ID = "id";
+    }
+
+
+    public static class MoDifiedDetail{
+        public final static String ID = "id";
+    }
+
+    public static class MyFeedback{
+        public final static String START_PAGE = "startPage";
+        public final static String EVERY_PAGE = "everyPage";
+        public final static String ID = "id";
+        public final static String TYPE = "type";
+    }
+
+    public static class OneDepartTeacher{
+        public final static String DEPART_ID = "id";
+        public final static String TeName = "teName";
+    }
+
+    public static class FeedbackToServer{
+        public final static String FEEDBACK_TITLE = "feedbackTitle";
+        public final static String FEEDBACK_ADDRESS = "feedbackAdress";
+        public final static String FEEDBACK_CONTENT = "feedbackContent";
+        public final static String FEEDBACK_DEPT = "feedbackDept";
+        public final static String FEEDBACK_PERSON_ID = "feedbackPersonid";
+        public final static String FEEDBACK_PERSON_NAME = "feedbackPersonname";
+        public final static String FEEDBACK_A = "feedbackA";
+        public final static String FEEDBACK_B = "feedbackB";
+        public final static String FEEDBACK_C = "feedbackC";
+        public final static String TO_RESPONSIBL_NAME = "toResponsiblename";
+        public final static String  TO_RESPONSIBLE_DEPT= "toResponsibledept";
+        public final static String TO_RESPONSIBLE_ID = "toResponsibleid";
+    }
+
+    public static class UploadFile{
+//        public final static String KEY = "key";
+    }
+
+    public static class UpdatePwd{
+        public final static String TYPE = "type";
+        public final static String ID = "id";
+        public final static String USERNAME = "userName";
+        public final static String PASSWORD = "password";
+        public final static String NewPassword = "newPassword";
+    }
+
+    public static class UpdateObj{
+        public final static String TYPE = "type";
+        public final static String TE_USER = "teUser";
+    }
 }

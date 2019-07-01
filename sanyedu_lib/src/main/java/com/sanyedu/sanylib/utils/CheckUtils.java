@@ -9,6 +9,12 @@ import java.lang.reflect.Field;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 验证工具类
+ *
+ * @author zengmaolin 2019/07/02
+ *
+ */
 public class CheckUtils {
     /**
      * 判断参数是否为空，如果为空，则返回非法
