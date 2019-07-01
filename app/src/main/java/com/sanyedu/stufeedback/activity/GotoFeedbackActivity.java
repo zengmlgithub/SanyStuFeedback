@@ -73,6 +73,11 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         getPresenter().postFeedbackToServer(pathList,getCurrentItem());
     }
 
+    @OnClick(R.id.goback_tv)
+    public void goBack(){
+        finish();
+    }
+
     @BindView(R.id.title_et)
     EditText titleEt;
 
