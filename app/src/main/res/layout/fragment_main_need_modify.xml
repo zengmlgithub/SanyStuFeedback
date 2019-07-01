@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+>
+
+
+
+    <android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:id="@+id/pulldown_srl"
+                                                  >
+        <com.sanyedu.sanylib.widget.EmptyRecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/need_rv"
+            android:layout_centerHorizontal="true"
+            android:groupIndicator="@null" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <include android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/empty_view"
+             layout="@layout/layout_empty_view"
+            android:visibility="gone"
+             />
+</RelativeLayout>

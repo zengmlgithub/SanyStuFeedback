@@ -13,4 +13,8 @@ public class StuContantsUtil {
     public static final String TYPE_STUDENT = "1";
     public static final String TYPE_TEACHER = "2";
 
+    //今日反馈
+    public static final String HAS_MODIFIED = "2"; //已整改的反馈
+    public static final String NEED_MODIFED = "1"; //等整改的反馈
+
 }

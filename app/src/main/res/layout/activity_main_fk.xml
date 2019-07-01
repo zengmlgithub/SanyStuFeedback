@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goback_ib"
+        android:background="@mipmap/icon_goback"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="6dp"
+        />
+
+   <android.support.design.widget.TabLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/title_tl"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="6dp"
+       app:tabMode="fixed"
+       app:tabGravity="fill"
+       app:tabSelectedTextColor="@color/red"
+       app:tabTextColor="#999"
+       >
+   </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vp_content"
+        android:layout_below="@id/title_tl"
+        >
+    </android.support.v4.view.ViewPager>
+</RelativeLayout>

@@ -1,12 +1,9 @@
 package com.sanyedu.stufeedback.activity;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.text.format.DateUtils;
 import android.widget.TextView;
 
 import com.sanyedu.sanylib.base.SanyBaseActivity;
-import com.sanyedu.sanylib.utils.ConstantUtil;
 import com.sanyedu.sanylib.utils.SanyDataUtils;
 import com.sanyedu.stufeedback.R;
 import com.sanyedu.stufeedback.model.NoticeDetailBean;
@@ -31,21 +28,6 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
 
     @BindView(R.id.content_tv)
     TextView contentTv;
-//    private ImageButton gobackIb;
-
-//    titleTv = findViewById(R.id.feedback_single_tv);
-//    contentTv = findViewById(R.id.content_tv);
-//    pubPersonTv = findViewById(R.id.pub_person_tv);
-//    dateTv = findViewById(R.id.notice_date_time_tv);
-//    gobackIb = findViewById(R.id.goback_iv);
-
-//    @Override
-//    public void onClick(View v) {
-//        if (v.getId() == R.id.goback_iv){
-//            finish();
-//        }
-//    }
-
 
     @OnClick(R.id.goback_iv)
     public void closePage() {
@@ -58,19 +40,11 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
         Intent intent = getIntent();
         if(intent != null){
             String id = intent.getStringExtra(StuContantsUtil.ID);
+            showLoading();
             getPresenter().getNoticeDetail(id);
         }
     }
 
-//    @Override
-//    protected void findViews() {
-//
-//    }
-
-//    @Override
-//    protected void setListeners() {
-//        gobackIb.setOnClickListener(this);
-//    }
 
     @Override
     protected int getLayout() {
@@ -84,12 +58,12 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
 
     @Override
     public void setNoticeDetail(NoticeDetailBean detailBean) {
+        hideLoading();
         if(detailBean != null){
             titleTv.setText(detailBean.getTitle());
             contentTv.setText(detailBean.getContent());
             pubPersonTv.setText(detailBean.getPubName());
             String formattedStr = SanyDataUtils.getFormatStr(detailBean.getCreatetime());
-
             dateTv.setText(formattedStr);
         }
     }

@@ -26,4 +26,10 @@ public class StuHttpUtil {
         public final static String FEEDBACK_FILEB = "feedbackFileb";
         public final static String FEEDBACK_FILEC = "feedbackFilec";
     }
+
+    public static class TodayFeedback{
+        public final static String START_PAGE="startPage";
+        public final static String EVERY_PAGE="everyPage";
+        public final static String TYPE = "type";
+    }
 }
