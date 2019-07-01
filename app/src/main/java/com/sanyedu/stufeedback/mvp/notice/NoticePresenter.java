@@ -14,6 +14,7 @@ import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.stufeedback.model.NoticeModel;
 import com.sanyedu.stufeedback.model.PageNoticeBean;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
             return;
         }
 
-        String url = HttpUtil.getPort(HttpUtil.NOTICE_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.NOTICE_PORT);
 
         OkHttpUtils
                 .post()

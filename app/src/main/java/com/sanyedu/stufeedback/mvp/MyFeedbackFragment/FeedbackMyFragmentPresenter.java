@@ -13,6 +13,7 @@ import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.stufeedback.model.PageRecordBean;
 import com.sanyedu.stufeedback.model.Records;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class FeedbackMyFragmentPresenter extends BasePresenter<CommonFeedbackFra
 
     @Override
     public void getFeedbacks(@NonNull String startPage,@NonNull String everyPage, @NonNull String id, @NonNull String type) {
-        String url = HttpUtil.getPort(HttpUtil.FEEDBACK_MY_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.FEEDBACK_MY_PORT);
         SanyLogs.i("request:" + "id:" + id + "====type:" + type);
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils

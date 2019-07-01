@@ -13,6 +13,7 @@ import com.sanyedu.sanylib.utils.CheckUtils;
 import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import okhttp3.Call;
 
@@ -30,7 +31,7 @@ public class ModifyPwdPresenter extends BasePresenter<ModifyPwdContacts.IModifyP
             return;
         }
 
-        String url = HttpUtil.getPort(HttpUtil.UPDATE_PERSONAL_PASSWORD_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.UPDATE_PERSONAL_PASSWORD_PORT);
 
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils

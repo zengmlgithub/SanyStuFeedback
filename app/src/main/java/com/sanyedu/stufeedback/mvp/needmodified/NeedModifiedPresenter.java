@@ -34,7 +34,7 @@ public class NeedModifiedPresenter extends BasePresenter<NeedModifiedContacts.IN
             return;
         }
 
-        String url = HttpUtil.getPort(HttpUtil.TODYA_FEEDBACK_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.TODYA_FEEDBACK_PORT);
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils
                 .post()

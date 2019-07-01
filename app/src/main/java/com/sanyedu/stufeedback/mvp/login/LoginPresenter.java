@@ -20,6 +20,7 @@ import com.sanyedu.stufeedback.model.StudentModel;
 import com.sanyedu.stufeedback.model.TokenModel;
 import com.sanyedu.stufeedback.utils.StuContantsUtil;
 import com.sanyedu.stufeedback.utils.StuErrorUtil;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
     @Override
     public void getToken(final String userName, final String password, final String regFlag) {
-        String url = HttpUtil.getPort(HttpUtil.AUTH_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.AUTH_PORT);
 //        String tokenValue = "Bearer " + SpHelper.getString(ConstantUtil.TOKEN);
         OkHttpUtils
                 .post()
@@ -76,7 +77,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
     @Override
     public void getLogin(String userName, String password, String regFlag) {
-        String url = HttpUtil.getPort(HttpUtil.LOGIN_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.LOGIN_PORT);
         String tokenValue = "Bearer " + SpHelper.getString(StuContantsUtil.TOKEN);
         SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils

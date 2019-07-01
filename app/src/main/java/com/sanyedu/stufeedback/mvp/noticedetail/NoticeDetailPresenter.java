@@ -13,6 +13,7 @@ import com.sanyedu.sanylib.utils.ErrorUtils;
 import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.stufeedback.model.NoticeDetailBean;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import okhttp3.Call;
 
@@ -23,7 +24,7 @@ public class NoticeDetailPresenter extends BasePresenter<NoticeDetailContacts.IN
 
     @Override
     public void getNoticeDetail(@NonNull String id) {
-        String url = HttpUtil.getPort(HttpUtil.NOTICE_DETAIL_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.NOTICE_DETAIL_PORT);
 
         OkHttpUtils
                 .get()

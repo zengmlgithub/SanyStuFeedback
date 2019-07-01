@@ -14,7 +14,7 @@
               android:id="@+id/save_tv"
               android:text="@string/modify_email"/>
 
-    <com.sanyedu.myfeedback.widget.EditTextWithDel android:layout_width="match_parent"
+    <com.sanyedu.sanylib.widget.EditTextWithDel android:layout_width="match_parent"
                                                    android:layout_height="wrap_content"
                                                    style="@style/edit_content_style"
                                                    android:layout_below="@+id/goback_tv"

@@ -18,7 +18,7 @@
             style="@style/page_title_style"
     />
 
-    <com.sanyedu.myfeedback.widget.EditTextWithDel
+    <com.sanyedu.sanylib.widget.EditTextWithDel
             android:layout_width="324dp"
             android:id="@+id/input_first_pwd_et"
             android:layout_centerHorizontal="true"
@@ -38,7 +38,7 @@
               style="@style/edit_hint_style"
     />
 
-    <com.sanyedu.myfeedback.widget.EditTextWithDel
+    <com.sanyedu.sanylib.widget.EditTextWithDel
             android:layout_width="324dp"
             android:layout_height="wrap_content"
             android:id="@+id/input_second_pwd_et"
@@ -59,7 +59,7 @@
               style="@style/edit_hint_style"
     />
 
-    <com.sanyedu.myfeedback.widget.EditTextWithDel
+    <com.sanyedu.sanylib.widget.EditTextWithDel
             android:layout_width="324dp"
             android:layout_height="wrap_content"
             android:id="@+id/input_third_pwd_et"

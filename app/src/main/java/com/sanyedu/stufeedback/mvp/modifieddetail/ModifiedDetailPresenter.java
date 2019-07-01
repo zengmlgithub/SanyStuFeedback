@@ -28,7 +28,7 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
             return;
         }
 
-        String url = HttpUtil.getPort(HttpUtil.MODIFIED_DETAIL_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.MODIFIED_DETAIL_PORT);
         OkHttpUtils
                 .post()
                 .url(url)

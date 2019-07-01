@@ -17,6 +17,7 @@ import com.sanyedu.stufeedback.model.DepartModel;
 import com.sanyedu.stufeedback.model.FeedbackItem;
 import com.sanyedu.stufeedback.model.PersonModel;
 import com.sanyedu.stufeedback.mvp.UpdatePicture.UpdatePictureService;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import okhttp3.Call;
 
@@ -31,7 +32,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
     @Override
     public void getDepart() {
-        String url = HttpUtil.getPort(HttpUtil.GET_ALL_DEPART_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.GET_ALL_DEPART_PORT);
         OkHttpUtils
                 .get()
                 .url(url)
@@ -82,7 +83,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
         }
 
 
-        String url = HttpUtil.getPort(HttpUtil.GET_ONE_DEPART_TEACHER_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.GET_ONE_DEPART_TEACHER_PORT);
         OkHttpUtils
                 .post()
                 .addParams(HttpUtil.OneDepartTeacher.DEPART_ID, departId)
@@ -135,7 +136,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
         SanyLogs.i(item.toString());
 
-        String url = HttpUtil.getPort(HttpUtil.POST_FEEDBACK_TO_SERVER_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.POST_FEEDBACK_TO_SERVER_PORT);
 
         String toResponsibleId = item.getToResponsibleid();
         if(TextUtils.isEmpty(toResponsibleId)){

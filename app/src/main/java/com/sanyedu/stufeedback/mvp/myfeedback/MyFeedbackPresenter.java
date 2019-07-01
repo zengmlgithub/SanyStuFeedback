@@ -16,6 +16,7 @@ import com.sanyedu.sanylib.utils.HttpUtil;
 import com.sanyedu.sanylib.utils.ToastUtil;
 import com.sanyedu.stufeedback.model.PageRecordBean;
 import com.sanyedu.stufeedback.model.Records;
+import com.sanyedu.stufeedback.utils.StuHttpUtil;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class MyFeedbackPresenter extends BasePresenter<MyFeedbackContacts.IMyFee
             return;
         }
 
-        String url = HttpUtil.getPort(HttpUtil.MY_FEEDBACK_PORT);
+        String url = HttpUtil.getPort(StuHttpUtil.MY_FEEDBACK_PORT);
 
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils
