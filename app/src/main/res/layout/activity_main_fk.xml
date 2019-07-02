@@ -4,6 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="@mipmap/title_bg"
+        android:id="@+id/title_rl"
+        >
+
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -13,17 +20,18 @@
         android:layout_marginLeft="17dp"
         android:layout_marginTop="6dp"
         />
+    </RelativeLayout>
 
    <android.support.design.widget.TabLayout
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:id="@+id/title_tl"
        android:layout_centerHorizontal="true"
-       android:layout_marginTop="6dp"
        app:tabMode="fixed"
        app:tabGravity="fill"
        app:tabSelectedTextColor="@color/red"
        app:tabTextColor="#999"
+       android:layout_below="@id/title_rl"
        >
    </android.support.design.widget.TabLayout>
 

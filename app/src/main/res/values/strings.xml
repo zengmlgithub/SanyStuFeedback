@@ -18,4 +18,5 @@
     <string name="please_input_content">请输入内容</string>
     <string name="please_choose_depart">请选择部门</string>
     <string name="please_choose_person">请选责任人</string>
+    <string name="save">保存</string>
 </resources>

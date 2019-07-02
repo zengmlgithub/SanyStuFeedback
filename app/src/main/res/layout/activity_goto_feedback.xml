@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingLeft="19dp"
-    android:paddingRight="19dp"
+
     >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/op_rl"
+        android:background="@mipmap/title_bg"
+        android:paddingLeft="19dp"
+        android:paddingRight="19dp"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -28,6 +30,7 @@
             android:layout_marginTop="6dp"
             style="@style/title_size_style"
             android:id="@+id/submit_tv"
+
             />
     </RelativeLayout>
 
@@ -37,11 +40,11 @@
         android:hint="请为你的问题输入一个标题"
         android:layout_below="@+id/op_rl"
         android:background="@drawable/shape_rec_black"
-        android:layout_marginTop="16dp"
         android:id="@+id/title_et"
         style="@style/title_size_style"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,6 +53,8 @@
         android:orientation="horizontal"
         android:layout_below="@id/title_et"
         android:layout_marginTop="10dp"
+        android:paddingLeft="19dp"
+        android:paddingRight="19dp"
         >
 
         <EditText
@@ -78,6 +83,8 @@
         android:gravity="top|left"
         android:paddingTop="10dp"
         android:paddingLeft="10dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
         />
 
     <LinearLayout
@@ -139,6 +146,8 @@
         app:spanCount="3"
         tools:listitem="@layout/item_upload_image"
         android:layout_below="@id/pl_fl_ll"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
         >
     </android.support.v7.widget.RecyclerView>
 
