@@ -76,7 +76,7 @@ public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackCo
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_my_feedback;
+        return R.layout.activity_feedback_my;
     }
 
     @Override
