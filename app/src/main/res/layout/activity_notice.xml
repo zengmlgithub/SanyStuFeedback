@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:id="@+id/title_rl"
+        android:background="@mipmap/title_bg"
+        >
+        <TextView
+            android:id="@+id/title"
+            style="@style/base_title_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="消息中心"
-            android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
-            android:id="@+id/title"
-           style="@style/base_title_style"
-    />
+            android:layout_marginTop="6dp"
+            android:text="消息中心" />
+    </RelativeLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"
-                                                  android:layout_height="match_parent"
-                                                  android:id="@+id/refreshLayout"
-                                                  android:layout_below="@+id/title"
-                                                  android:layout_marginTop="15dp"
 
-    >
-        <com.sanyedu.sanylib.widget.EmptyRecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/main_msg_rv"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/title"
-                android:layout_marginTop="15dp"
-                android:foregroundGravity="center_horizontal"
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_rl"
         >
-        </com.sanyedu.sanylib.widget.EmptyRecyclerView>
+
+        <com.sanyedu.sanylib.widget.EmptyRecyclerView
+            android:id="@+id/main_msg_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:foregroundGravity="center_horizontal"
+
+            ></com.sanyedu.sanylib.widget.EmptyRecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <include layout="@layout/layout_empty_view"
-             android:id="@+id/layout_empty_view"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:visibility="gone"
-    />
+    <include
+        android:id="@+id/layout_empty_view"
+        layout="@layout/layout_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 </RelativeLayout>
