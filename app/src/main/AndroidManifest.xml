@@ -93,12 +93,14 @@
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden"
             />
 
         <activity android:name=".activity.ModifyChangeActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden"
             />
         <activity android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"
             android:launchMode="singleInstance"
