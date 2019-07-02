@@ -1,52 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="17dp"
-                android:paddingRight="17dp"
->
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-    <ImageButton
+    >
+
+    <RelativeLayout
+        android:id="@+id/title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="@mipmap/title_bg"
+
+        >
+
+        <ImageButton
             android:id="@+id/goback_tv"
             style="@style/goback_style"
-            android:contentDescription="@string/common_description"
-    />
+            android:contentDescription="@string/common_description" />
 
-    <TextView style="@style/page_title_style"
-              android:id="@+id/save_tv"
-              android:text="@string/modify_tel"/>
+        <TextView
+            android:id="@+id/save_tv"
+            style="@style/page_title_style"
+            android:text="@string/modify_tel" />
 
-    <com.sanyedu.sanylib.widget.EditTextWithDel android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   style="@style/edit_content_style"
-                                                   android:layout_below="@+id/goback_tv"
-                                                   android:layout_marginTop="15dp"
-                                                   android:id="@+id/modify_content_etw"
-                                                   android:background="@drawable/shape_rec_black"
-                                                   android:hint="@string/please_input_tel"
-    />
+    </RelativeLayout>
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignStart="@+id/modify_content_etw"
-              android:layout_alignLeft="@+id/modify_content_etw"
-              android:textSize="12sp"
-              android:textColor="@color/red"
-              android:layout_marginStart="4dp"
-              android:layout_marginLeft="4dp"
-              android:layout_below="@id/modify_content_etw"
-              android:id="@+id/check_tv"
-              android:visibility="gone"
-    />
 
+    <com.sanyedu.sanylib.widget.EditTextWithDel
+        android:id="@+id/modify_content_etw"
+        style="@style/edit_content_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/title_rl"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+
+        android:background="@drawable/shape_rec_black"
+        android:hint="@string/please_input_tel" />
+
+    <TextView
+        android:id="@+id/check_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modify_content_etw"
+        android:layout_alignStart="@+id/modify_content_etw"
+        android:layout_alignLeft="@+id/modify_content_etw"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="17dp"
+        android:textColor="@color/red"
+        android:textSize="12sp"
+        android:visibility="gone" />
 
     <Button
-            android:layout_below="@id/modify_content_etw"
-            android:layout_marginTop="45dp"
-            android:text="@string/confirm"
-            style="@style/ring_btn_style"
-            android:id="@+id/confirm_btn"
-            android:background="@drawable/shape_ring_confirm"
-    />
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:id="@+id/confirm_btn"
+        style="@style/ring_btn_style"
+        android:layout_below="@id/modify_content_etw"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/shape_ring_confirm"
+        android:text="@string/confirm" />
 
 </RelativeLayout>

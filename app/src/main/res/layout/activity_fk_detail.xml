@@ -3,11 +3,11 @@
                 android:layout_width="match_parent" android:layout_height="match_parent">
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:id="@+id/title_rl"
-    >
+        android:id="@+id/title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="@mipmap/title_bg">
+
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
