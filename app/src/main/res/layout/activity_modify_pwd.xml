@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent" android:layout_height="match_parent">
-    <ImageButton
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:id="@+id/title_rl"
+        android:background="@mipmap/title_bg"
+        >
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/left_arrow"
             android:id="@+id/goback_tv"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="17dp"
-    />
+            />
 
-    <TextView
+        <TextView
             android:text="修改密码"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="6dp"
             android:id="@+id/save_tv"
             style="@style/page_title_style"
-    />
+            />
+
+    </RelativeLayout>
 
     <com.sanyedu.sanylib.widget.EditTextWithDel
             android:layout_width="324dp"
             android:id="@+id/input_first_pwd_et"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/save_tv"
-            android:layout_marginTop="25dp"
+            android:layout_below="@id/title_rl"
+
             style="@style/edit_content_style"
             android:background="@drawable/shape_rec_black"
     />
