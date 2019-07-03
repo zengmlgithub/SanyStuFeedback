@@ -6,9 +6,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="41dp"
         android:id="@+id/title_rl"
+        android:background="@mipmap/title_bg"
         >
         <ImageButton
             android:layout_width="18dp"
@@ -16,7 +16,7 @@
             android:id="@+id/goback_iv"
             android:background="@mipmap/left_arrow"
             android:layout_marginLeft="17dp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
             />
 
         <TextView
@@ -26,6 +26,7 @@
             android:text="@string/important_notice_title"
             style="@style/title_size_style"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
             />
 
     </RelativeLayout>
@@ -37,7 +38,6 @@
         android:layout_centerHorizontal="true"
         android:paddingLeft="15dp"
         android:paddingRight="21dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/shape_notice_detail_bg"
         >
 
