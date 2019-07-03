@@ -1,12 +1,17 @@
 package com.sanyedu.stufeedback.activity;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
@@ -39,6 +44,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.view.View.inflate;
+
 
 /**
  * 提交反馈的页面
@@ -55,8 +62,8 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     public static final int REQUEST_CODE_PREVIEW = 101;
     private ImagePickerAdapter adapter;
 
-    private DepartAdapter departAdapter;
-    private PersonAdapter personAdapter;
+    private ArrayAdapter<String> departAdapter;
+    private ArrayAdapter<String> personAdapter;
 
     @BindView(R.id.policy_department_et)
     Spinner departSpinner;
@@ -112,16 +119,13 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     }
 
     private void initPerson() {
-        personAdapter = new PersonAdapter(getLayoutInflater());
-        personSpinner.setAdapter(personAdapter);
+//        personAdapter = new PersonAdapter(getLayoutInflater());
+//        personSpinner.setAdapter(personAdapter);
     }
 
     private void initDepart() {
-        departAdapter = new DepartAdapter(getLayoutInflater());
-        departSpinner.setAdapter(departAdapter);
-
+//        departAdapter = new DepartAdapter(getLayoutInflater());
         getPresenter().getDepart();
-
         departSpinner.setOnItemSelectedListener(this);
     }
 
@@ -172,12 +176,68 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     @Override
     public void setDepartList(List<DepartModel> departList) {
         departBeans = departList;
-        departAdapter.setData(departList);
+        if (departList != null){
+            final ArrayList<String> strList = new ArrayList<>();
+            strList.add("请选择部门");
+            for (DepartModel departModel : departList){
+                strList.add(departModel.getFullname());
+            }
+            departAdapter = new ArrayAdapter<String>(GotoFeedbackActivity.this,R.layout.spinner_checked_text,strList){
+                @Override
+                public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                    View view = inflate(getContext(), R.layout.item_spinner,
+                            null);
+                    TextView label = (TextView) view
+                            .findViewById(R.id.person_tv);
+                    label.setText(strList.get(position));
+                    if (departSpinner.getSelectedItemPosition() == position) {
+                        //设置选中时的颜色
+                        view.setBackgroundColor(getResources().getColor(
+                                R.color.spinner_item_checked));
+                    } else {
+                        view.setBackgroundColor(getResources().getColor(
+                                R.color.spinner_item_notchecked));
+                    }
+
+                    return view;
+                }
+            };
+            departAdapter.setDropDownViewResource(R.layout.item_spinner);
+            departSpinner.setAdapter(departAdapter);
+        }
+
     }
 
     @Override
     public void setPersonList(List<PersonModel> personList) {
-        personAdapter.setData(personList);
+//        personAdapter.setData(personList);
+
+        final ArrayList<String> strList = new ArrayList<>();
+        strList.add("请选择个人");
+        for (PersonModel departModel : personList){
+            strList.add(departModel.getTeName());
+        }
+        personAdapter = new ArrayAdapter<String>(GotoFeedbackActivity.this,R.layout.spinner_checked_text,strList){
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = inflate(getContext(), R.layout.item_spinner,
+                        null);
+                TextView label = (TextView) view
+                        .findViewById(R.id.person_tv);
+                label.setText(strList.get(position));
+                if (departSpinner.getSelectedItemPosition() == position) {
+                    //设置选中时的颜色
+                    view.setBackgroundColor(getResources().getColor(
+                            R.color.spinner_item_checked));
+                } else {
+                    view.setBackgroundColor(getResources().getColor(
+                            R.color.spinner_item_notchecked));
+                }
+                return view;
+            }
+        };
+        personAdapter.setDropDownViewResource(R.layout.item_spinner);
+        personSpinner.setAdapter(personAdapter);
     }
 
     @Override
