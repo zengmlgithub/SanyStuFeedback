@@ -23,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class NoticeActivity extends SanyBaseActivity<NoticePresenter> implements NoticeContacts.INoticeUI {
 
@@ -37,6 +38,10 @@ public class NoticeActivity extends SanyBaseActivity<NoticePresenter> implements
     @BindView(R.id.layout_empty_view)
     View emptyView;
 
+    @OnClick(R.id.goback_ib)
+    public void goback(){
+        finish();
+    }
     private List<NoticeModel> currList = new ArrayList<>();
 
     private final int PAGE_COUNT = 4;
