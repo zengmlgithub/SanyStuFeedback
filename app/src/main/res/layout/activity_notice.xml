@@ -16,7 +16,7 @@
             android:background="@mipmap/icon_goback"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="17dp"
-            android:id="@+id/gotback_ib"
+            android:id="@+id/goback_ib"
             />
 
         <TextView

@@ -80,7 +80,7 @@ public class LoadMoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 case LOADING_END: // 加载到底
                     footViewHolder.pbLoading.setVisibility(View.GONE);
                     footViewHolder.tvLoading.setVisibility(View.GONE);
-                    footViewHolder.llEnd.setVisibility(View.VISIBLE);
+                    footViewHolder.llEnd.setVisibility(View.GONE);
                     break;
 
                 default:
