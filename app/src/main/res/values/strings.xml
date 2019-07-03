@@ -19,4 +19,12 @@
     <string name="please_choose_depart">请选择部门</string>
     <string name="please_choose_person">请选责任人</string>
     <string name="save">保存</string>
+    <string name="let_txt">让</string>
+    <string name="feedback_txt">反馈</string>
+    <string name="modify_txt">整改</string>
+    <string name="my_school">办一所科技融入教育的大学</string>
+    <string name="xun1_txt">信息采集自动化</string>
+    <string name="xun2_txt">校园管理信息化</string>
+    <string name="xun3_txt">教育资源均等化</string>
+    <string name="xun4_txt">家教互动平台化</string>
 </resources>

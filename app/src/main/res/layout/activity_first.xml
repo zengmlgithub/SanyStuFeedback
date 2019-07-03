@@ -24,5 +24,124 @@
                   android:gravity="center"
 
         />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/let_txt"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="77dp"
+            android:layout_marginTop="81dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/feedback_txt"
+            android:textSize="25sp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="113dp"
+            android:layout_marginTop="79dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/all_site_bg"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="111dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/let_txt"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="77dp"
+            android:layout_marginTop="196dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_txt"
+            android:textSize="25sp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="113dp"
+            android:layout_marginTop="194dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/on_time_bg"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="226dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_school"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/my_school_tv"
+            android:layout_marginTop="454dp"
+            android:layout_centerHorizontal="true"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_school_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/xun1_txt"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                android:id="@+id/xun1_tv"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/xun2_txt"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                android:id="@+id/xun2_tv"
+                android:layout_toRightOf="@id/xun1_tv"
+                android:layout_marginLeft="38dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/xun3_txt"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                android:id="@+id/xun3_tv"
+                android:layout_below="@id/xun1_tv"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/xun4_txt"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                android:id="@+id/xun4_tv"
+                android:layout_toRightOf="@id/xun3_tv"
+                android:layout_marginLeft="38dp"
+                android:layout_below="@id/xun2_tv"
+                android:layout_marginTop="10dp"
+                />
+        </RelativeLayout>
+
     </RelativeLayout>
 </RelativeLayout>
