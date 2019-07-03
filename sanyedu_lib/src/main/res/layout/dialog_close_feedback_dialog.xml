@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
             android:gravity="center_horizontal"
-            android:text="提示" />
+            android:text="请输入备忘" />
 
         <EditText
             android:id="@+id/content"
@@ -30,7 +30,10 @@
             android:layout_marginRight="31dp"
             android:background="@drawable/shape_close_feedback_bg"
             android:gravity="top|left"
-            android:lines="8" />
+            android:lines="8"
+            android:padding="12dp"
+            android:textSize="12sp"
+            />
 
         <View
             android:layout_width="match_parent"

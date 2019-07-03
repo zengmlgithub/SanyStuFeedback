@@ -97,6 +97,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         modifyTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                opeartorRl.setVisibility(View.GONE);
                 StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class,feedbackId);
             }
         });
@@ -105,7 +106,8 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             @Override
             public void onClick(View v) {
 //                finish();
-                showCloaseDialog();
+                opeartorRl.setVisibility(View.GONE);
+                showCloseDialog();
             }
         });
 
@@ -185,7 +187,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     }
 
     private CloseFeedbackDialog closeFeedbackDialog;
-    private void showCloaseDialog(){
+    private void showCloseDialog(){
         if(closeFeedbackDialog == null){
             closeFeedbackDialog = new CloseFeedbackDialog(ModifyDetailActivity.this, R.style.sany_dialog, new CloseFeedbackDialog.OnClickListener() {
                 @Override
