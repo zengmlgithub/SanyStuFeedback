@@ -25,7 +25,8 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
     public void commit(){
         String username = usernameEt.getText().toString();
         String password = passwordEt.getText().toString();
-        getPresenter().getToken(username,password, StuContantsUtil.TYPE_STUDENT);
+//        getPresenter().getToken(username,password, StuContantsUtil.TYPE_STUDENT);
+        getPresenter().getLogin(username,password,StuContantsUtil.TYPE_STUDENT);
         showLoading();
     }
 

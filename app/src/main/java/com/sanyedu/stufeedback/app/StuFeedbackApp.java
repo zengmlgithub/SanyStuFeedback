@@ -1,7 +1,14 @@
 package com.sanyedu.stufeedback.app;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.widget.ImageView;
 
+import com.previewlibrary.ZoomMediaLoader;
+import com.previewlibrary.loader.IZoomMediaLoader;
+import com.previewlibrary.loader.MySimpleTarget;
 import com.sanyedu.sanylib.base.SanyEdu;
 import com.sanyedu.sanylib.imageloader.ImageLoader;
 import com.sanyedu.sanylib.log.SanyLogs;

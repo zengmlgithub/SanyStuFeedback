@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.sanyedu.stufeedback"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -57,4 +57,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
 
     implementation 'com.tencent.bugly:crashreport:3.0.0'
+
+    implementation 'com.ycjiang:ImagePreview:2.2.6'
 }

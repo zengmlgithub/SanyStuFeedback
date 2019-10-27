@@ -34,15 +34,19 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
 
     @Override
-    public void getToken(final String userName, final String password, final String regFlag) {
+    public void getToken(final String userName, final String password, final String loginFlag) {
         String url = HttpUtil.getPort(StuHttpUtil.AUTH_PORT);
 //        String tokenValue = "Bearer " + SpHelper.getString(ConstantUtil.TOKEN);
+
+
+        String passwordMD5 = MD5Utils.getMD5(password);
+        SanyLogs.i("userName:" + userName + ",passwordMD5:" + passwordMD5 + ",loginFlag:" + loginFlag);
         OkHttpUtils
                 .post()
                 .url(url)
                 .addParams("userName", userName)
-                .addParams("password", MD5Utils.getMD5(password))
-                .addParams("loginFlag", regFlag)
+                .addParams("password", passwordMD5)
+                .addParams("loginFlag", loginFlag)
                 .build()
                 .execute(new GenericsCallback<TokenModel>(new JsonGenericsSerializator()) {
                     @Override
@@ -59,7 +63,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                             if (!TextUtils.isEmpty(code)) {
                                 if (StuHttpUtil.SUCCESS.equals(code)) {
                                     SpHelper.putString(StuContantsUtil.TOKEN, tokenModel.getToken());
-                                    getLogin(userName, password, regFlag);
+                                    getLogin(userName, password, loginFlag);
                                 } else if (StuHttpUtil.ERROR_ACCOUNT.equals(code)) {
                                     //TODO:error
                                     SanyLogs.i("getToken:error-----");
@@ -76,17 +80,16 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
     }
 
     @Override
-    public void getLogin(String userName, String password, String regFlag) {
+    public void getLogin(String userName, String password, String loginFlag) {
         String url = HttpUtil.getPort(StuHttpUtil.LOGIN_PORT);
-        String tokenValue = "Bearer " + SpHelper.getString(StuContantsUtil.TOKEN);
-        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
+//        String tokenValue = "Bearer " + SpHelper.getString(StuContantsUtil.TOKEN);
+//        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
         OkHttpUtils
                 .post()
                 .url(url)
-                .addHeader(StuContantsUtil.AUTHORIZATION, tokenValue)
                 .addParams("userName", userName)
                 .addParams("password", MD5Utils.getMD5(password))
-                .addParams("loginFlag", regFlag)
+                .addParams("loginFlag", loginFlag)
                 .build()
                 .execute(
                         new BaseModelCallback<List<StudentModel>>(){
@@ -99,17 +102,26 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
                             @Override
                             public void onResponse(BaseModel<List<StudentModel>> response, int id) {
-
-                                try {
-                                    StudentModel userInfo = response.getObj().get(0);
-                                    SanyLogs.i(userInfo.toString());
-                                    SpHelper.putObj(StuContantsUtil.STUINFO,userInfo);
-                                    getView().startMain();
-                                }catch (Exception e){
-                                    SanyLogs.i(e.toString());
+                                if(response != null){
+                                    List<StudentModel> studentModels = response.getObj();
+                                    if (studentModels != null && studentModels.size() > 0){
+                                        try {
+                                            StudentModel userInfo =studentModels.get(0);
+                                            SanyLogs.i(userInfo.toString());
+                                            SpHelper.putObj(StuContantsUtil.STUINFO,userInfo);
+                                            getView().startMain();
+                                        }catch (Exception e){
+                                            SanyLogs.i(e.toString());
+                                            getView().loginFailure(StuHttpUtil.ERROR_SERVER);
+                                        }
+                                    }else{
+                                        getView().loginFailure(StuHttpUtil.ERROR_SERVER);
+                                        SanyLogs.i("studentModels is null");
+                                    }
+                                }else{
                                     getView().loginFailure(StuHttpUtil.ERROR_SERVER);
+                                    SanyLogs.i("response is null");
                                 }
-
                             }
                         }
                 );
@@ -118,6 +130,4 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
     private void saveUser(StudentModel userInfo) {
         //TODO:saveUser
     }
-
-
 }

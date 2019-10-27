@@ -2,6 +2,7 @@ package com.sanyedu.sanylib.model;
 
 
 import com.google.gson.Gson;
+import com.sanyedu.sanylib.log.SanyLogs;
 import com.sanyedu.sanylib.okhttp.callback.Callback;
 
 import java.lang.reflect.ParameterizedType;
